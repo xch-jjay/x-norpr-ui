@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - foundation
   pull_request:
 
 permissions:

@@ -61,6 +61,8 @@ pnpm docs:dev
 
 本地开发需要 Node.js 22.13 或更高版本。
 
+文档站会在 `master` 更新后自动部署到 [GitHub Pages](https://xch-jjay.github.io/x-norpr-ui/)。首次启用时，请在仓库的 `Settings → Pages → Build and deployment → Source` 中选择 `GitHub Actions`。
+
 提交代码前建议运行完整检查：
 
 ```bash
