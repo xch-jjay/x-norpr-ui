@@ -1,0 +1,139 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(button) {
+  --z-button-color: #606266;
+  --z-button-bg-color: #ffffff;
+  --z-button-border-color: #dcdfe6;
+  --z-button-hover-color: #409eff;
+  --z-button-hover-bg-color: #ecf5ff;
+  --z-button-hover-border-color: #b3d8ff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 32px;
+  padding: 0 15px;
+  border: 1px solid var(--z-button-border-color);
+  border-radius: 4px;
+  color: var(--z-button-color);
+  background-color: var(--z-button-bg-color);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--z-button-hover-color);
+    background-color: var(--z-button-hover-bg-color);
+    border-color: var(--z-button-hover-border-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid color-mix(in srgb, var(--z-button-hover-color) 35%, transparent);
+    outline-offset: 2px;
+  }
+
+  @include m(small) {
+    height: 24px;
+    padding: 0 11px;
+    font-size: 12px;
+  }
+
+  @include m(large) {
+    height: 40px;
+    padding: 0 19px;
+    font-size: 14px;
+  }
+
+  @include m(primary) {
+    --z-button-color: #ffffff;
+    --z-button-bg-color: #409eff;
+    --z-button-border-color: #409eff;
+    --z-button-hover-color: #ffffff;
+    --z-button-hover-bg-color: #66b1ff;
+    --z-button-hover-border-color: #66b1ff;
+  }
+
+  @include m(success) {
+    --z-button-color: #ffffff;
+    --z-button-bg-color: #67c23a;
+    --z-button-border-color: #67c23a;
+    --z-button-hover-color: #ffffff;
+    --z-button-hover-bg-color: #85ce61;
+    --z-button-hover-border-color: #85ce61;
+  }
+
+  @include m(warning) {
+    --z-button-color: #ffffff;
+    --z-button-bg-color: #e6a23c;
+    --z-button-border-color: #e6a23c;
+    --z-button-hover-color: #ffffff;
+    --z-button-hover-bg-color: #ebb563;
+    --z-button-hover-border-color: #ebb563;
+  }
+
+  @include m(danger) {
+    --z-button-color: #ffffff;
+    --z-button-bg-color: #f56c6c;
+    --z-button-border-color: #f56c6c;
+    --z-button-hover-color: #ffffff;
+    --z-button-hover-bg-color: #f78989;
+    --z-button-hover-border-color: #f78989;
+  }
+
+  @include m(info) {
+    --z-button-color: #ffffff;
+    --z-button-bg-color: #909399;
+    --z-button-border-color: #909399;
+    --z-button-hover-color: #ffffff;
+    --z-button-hover-bg-color: #a6a9ad;
+    --z-button-hover-border-color: #a6a9ad;
+  }
+
+  @include when(plain) {
+    background-color: var(--z-button-hover-bg-color);
+  }
+
+  @include when(round) {
+    border-radius: 999px;
+  }
+
+  @include when(circle) {
+    width: 32px;
+    padding: 0;
+    border-radius: 50%;
+  }
+
+  @include when(block) {
+    width: 100%;
+  }
+
+  @include when(disabled) {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &:disabled {
+    pointer-events: none;
+  }
+
+  &__loading {
+    width: 1em;
+    height: 1em;
+    margin-right: 6px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: z-button-loading 0.8s linear infinite;
+  }
+}
+
+@keyframes z-button-loading {
+  to {
+    transform: rotate(360deg);
+  }
+}

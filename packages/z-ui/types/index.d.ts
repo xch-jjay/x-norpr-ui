@@ -6,6 +6,24 @@ export interface IconProps {
 }
 
 export declare const Icon: DefineComponent<IconProps>
+
+export type ButtonType = 'default' | 'primary' | 'success' | 'warning' | 'danger' | 'info'
+export type ButtonSize = 'small' | 'default' | 'large'
+export type ButtonNativeType = 'button' | 'submit' | 'reset'
+
+export interface ButtonProps {
+  type?: ButtonType
+  size?: ButtonSize
+  nativeType?: ButtonNativeType
+  loading?: boolean
+  disabled?: boolean
+  plain?: boolean
+  round?: boolean
+  circle?: boolean
+  block?: boolean
+}
+
+export declare const Button: DefineComponent<ButtonProps>
 export declare const version: string
 export declare function install(app: App): void
 
