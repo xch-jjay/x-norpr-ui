@@ -9,7 +9,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '指南', link: '/guide/installation' },
-      { text: '组件', link: '/component/icon' },
+      { text: '组件', link: '/component/button' },
       { text: 'GitHub', link: 'https://github.com/xch-jjay/x-norpr-ui' },
     ],
     sidebar: {
@@ -25,7 +25,10 @@ export default defineConfig({
       '/component/': [
         {
           text: '基础组件',
-          items: [{ text: 'Icon 图标', link: '/component/icon' }],
+          items: [
+            { text: 'Button 按钮', link: '/component/button' },
+            { text: 'Icon 图标', link: '/component/icon' },
+          ],
         },
       ],
     },

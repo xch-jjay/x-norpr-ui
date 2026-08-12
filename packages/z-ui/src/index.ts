@@ -1,10 +1,10 @@
 import type { App } from 'vue'
-import { Icon } from '@z-ui/components'
+import { Button, Icon } from '@z-ui/components'
 
-export { Icon }
+export { Button, Icon }
 export * from '@z-ui/components'
 
-const components = [Icon]
+const components = [Button, Icon]
 
 export const version = '0.1.0'
 

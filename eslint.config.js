@@ -21,6 +21,10 @@ export default tseslint.config(
   {
     files: ['**/*.{js,mjs,cjs,ts,vue}'],
     languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+        extraFileExtensions: ['.vue'],
+      },
       globals: {
         ...globals.browser,
         ...globals.node,
