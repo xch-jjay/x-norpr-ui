@@ -1,62 +1,46 @@
 # Icon 图标
 
-z-ui 推荐使用 xicons 作为图标库。
+Icon 用于承载图标或其他简短的视觉内容。z-ui 不内置图标集合，你可以配合任意 Vue 图标组件使用。
 
-```
-$ pnpm install @vicons/ionicons5
-```
-
-## 使用图标
-
-- 如果你想像用例一样直接使用,你需要全局注册组件,才能够直接在项目里使用。
-
-<script setup lang='ts'>
-import { ApertureOutline } from '@vicons/ionicons5'
-</script>
-<z-icon color="red" size="40">
-  <ApertureOutline />
-</z-icon>
-
-<z-icon color="green" size="40">
-  <ApertureOutline />
-</z-icon>
-
-<z-icon color="blue" size="40">
-  <ApertureOutline />
-</z-icon>
-
-<div>
-<z-icon color="red" size="60">
-  <ApertureOutline />
-</z-icon>
-
-<z-icon color="green" size="60">
-  <ApertureOutline />
-</z-icon>
-
-<z-icon color="blue" size="60">
-  <ApertureOutline />
-</z-icon>
-</div>
+## 基础用法
 
 ```vue
-<script setup lang="ts">
-import { ApertureOutline } from '@vicons/ionicons5'
-</script>
-
 <template>
-  <z-icon color="red" size="40">
-    <ApertureOutline />
+  <z-icon color="tomato" :size="24">
+    ★
   </z-icon>
 </template>
 ```
 
-### API
+## 配合图标库
 
-### Icon Props
+```bash
+pnpm add @vicons/ionicons5
+```
 
-| 名称  | 类型   | 默认值 | 说明                           |
-| ----- | ------ | ------ | ------------------------------ |
-| name  | String | 无     | 图标名称，用于指定图标类型     |
-| color | String | 无     | 图标颜色                       |
-| size  | String | 无     | 图标尺寸，例如 '16px' 或 '1em' |
+```vue
+<script setup lang="ts">
+import { AirplaneSharp } from '@vicons/ionicons5'
+</script>
+
+<template>
+  <z-icon color="#409eff" :size="24">
+    <AirplaneSharp />
+  </z-icon>
+</template>
+```
+
+## API
+
+### Props
+
+| 属性 | 类型 | 默认值 | 说明 |
+| --- | --- | --- | --- |
+| `color` | `string` | — | 图标颜色 |
+| `size` | `number \| string` | — | 图标尺寸。数字会转换为像素值，字符串可传 `1em`、`24px` 等 |
+
+### Slots
+
+| 名称 | 说明 |
+| --- | --- |
+| `default` | 图标内容 |

@@ -2,19 +2,25 @@
 layout: home
 
 hero:
-  name: z-ui 组件库
-  text: 基于 Vue 3 的组件库.
-  tagline: 掌握 vue3 组件编写
+  name: z-ui
+  text: Vue 3 轻量级组件库
+  tagline: TypeScript 优先，适合个人项目和中小型后台系统
   actions:
     - theme: brand
       text: 快速开始
-      link: /guide/quiestart
+      link: /guide/quick-start
+    - theme: alt
+      text: 查看组件
+      link: /component/icon
 
 features:
-  - icon: 1
-    title: 组件库构建流程
-    details: Vue3 组件库构建...
-  - icon: 2
-    title: 组件库单元测试
-    details: Vue3 组件库测试...
+  - icon: ⚡
+    title: Vue 3 原生体验
+    details: 基于 Composition API 和现代 Vue 生态构建。
+  - icon: TS
+    title: TypeScript 优先
+    details: 组件 API、Props 和事件都提供类型支持。
+  - icon: 📦
+    title: 开箱即用
+    details: 支持 npm、yarn、pnpm 安装，并提供完整样式入口。
 ---

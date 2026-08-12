@@ -4,8 +4,8 @@ import { AirplaneSharp } from '@vicons/ionicons5'
 
 <template>
   <div>
-    <z-icon :color="'red'" :size="20">
-      <AirplaneSharp> </AirplaneSharp>
+    <z-icon color="red" :size="20">
+      <AirplaneSharp />
     </z-icon>
   </div>
 </template>
