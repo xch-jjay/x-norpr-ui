@@ -33,6 +33,8 @@ git push origin v0.1.0
 NPM_TOKEN
 ```
 
+文档站部署不需要额外的 token，使用 GitHub Actions 的 Pages 权限完成发布。
+
 ## 版本规则
 
 - 补丁版本：修复问题，不改变 API，例如 `0.1.1`

@@ -1,6 +1,8 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS ? '/x-norpr-ui/' : '/',
+  lang: 'zh-CN',
   title: 'z-ui',
   description: 'A lightweight Vue 3 component library for TypeScript projects.',
   lastUpdated: true,
