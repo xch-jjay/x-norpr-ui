@@ -16,7 +16,7 @@
     "docs:dev": "pnpm -C docs dev",
     "docs:build": "pnpm -C docs build",
     "docs:preview": "pnpm -C docs preview",
-    "pack:check": "pnpm --filter z-ui pack:check",
+    "pack:check": "pnpm --filter @xch-jjay/z-ui pack:check",
     "clean": "node -e \"fs.rmSync('packages/z-ui/dist', { recursive: true, force: true })\""
   },
   "keywords": [

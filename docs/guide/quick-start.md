@@ -4,8 +4,8 @@
 
 ```ts
 import { createApp } from 'vue'
-import ZUI from 'z-ui'
-import 'z-ui/style.css'
+import ZUI from '@xch-jjay/z-ui'
+import '@xch-jjay/z-ui/style.css'
 import App from './App.vue'
 
 createApp(App).use(ZUI).mount('#app')
@@ -24,6 +24,6 @@ createApp(App).use(ZUI).mount('#app')
 ## 按需使用
 
 ```ts
-import { Icon } from 'z-ui'
-import 'z-ui/style.css'
+import { Icon } from '@xch-jjay/z-ui'
+import '@xch-jjay/z-ui/style.css'
 ```

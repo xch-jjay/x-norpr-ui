@@ -15,23 +15,23 @@
 ## 安装
 
 ```bash
-npm install z-ui
+npm install @xch-jjay/z-ui
 ```
 
 ```bash
-yarn add z-ui
+yarn add @xch-jjay/z-ui
 ```
 
 ```bash
-pnpm add z-ui
+pnpm add @xch-jjay/z-ui
 ```
 
 ## 快速使用
 
 ```ts
 import { createApp } from 'vue'
-import ZUI from 'z-ui'
-import 'z-ui/style.css'
+import ZUI from '@xch-jjay/z-ui'
+import '@xch-jjay/z-ui/style.css'
 import App from './App.vue'
 
 createApp(App).use(ZUI).mount('#app')
@@ -45,6 +45,7 @@ createApp(App).use(ZUI).mount('#app')
 
 ## 当前组件
 
+- Button
 - Icon
 
 首个稳定版本将围绕基础交互、表单、反馈、布局和展示场景逐步完善。
