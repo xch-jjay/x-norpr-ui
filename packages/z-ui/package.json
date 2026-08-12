@@ -1,0 +1,54 @@
+{
+  "name": "z-ui",
+  "version": "0.1.0",
+  "description": "A lightweight Vue 3 component library for TypeScript projects.",
+  "type": "module",
+  "main": "./dist/z-ui.cjs",
+  "module": "./dist/z-ui.js",
+  "types": "./dist/types/index.d.ts",
+  "style": "./dist/style.css",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/z-ui.js",
+      "require": "./dist/z-ui.cjs"
+    },
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "./dist/style.css"
+  ],
+  "keywords": [
+    "vue3",
+    "vue",
+    "typescript",
+    "component-library",
+    "ui"
+  ],
+  "author": "xch-jjay",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xch-jjay/x-norpr-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xch-jjay/x-norpr-ui/issues"
+  },
+  "homepage": "https://github.com/xch-jjay/x-norpr-ui#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "vue": "^3.4.0"
+  },
+  "scripts": {
+    "pack:check": "npm pack --dry-run"
+  }
+}

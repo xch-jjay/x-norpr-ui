@@ -1,12 +1,9 @@
 {
-  "name": "@x-norpr-ui/theme-chalk",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "name": "@z-ui/theme-chalk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Internal styles for z-ui.",
+  "main": "src/index.scss",
+  "types": "src/index.scss",
+  "scripts": {}
 }

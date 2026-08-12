@@ -1,1 +1,9 @@
 node_modules
+dist
+coverage
+docs/.vitepress/cache
+docs/.vitepress/dist
+.DS_Store
+.pnpm-store
+*.timestamp-*.mjs
+packages/z-ui/dist

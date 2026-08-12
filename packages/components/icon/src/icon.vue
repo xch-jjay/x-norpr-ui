@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { createNamespace } from '@x-norpr-ui/utils/create'
+import { createNamespace } from '@z-ui/utils/create'
 import { iconProps } from './icon';
 import { computed } from 'vue';
 
 defineOptions({
-  name:'z-icon'
+  name: 'ZIcon'
 })
 
 const bem = createNamespace('icon')
@@ -22,8 +22,8 @@ const style = computed(() => {
   if (!props.size && !props.color) return {}
 
   return {
-    ...(props.size ? { 'font-size': props.size + 'px' } : {}),
-    ...(props.color ? { color: props.color} : {})
+    ...(props.size ? { 'font-size': typeof props.size === 'number' ? `${props.size}px` : props.size } : {}),
+    ...(props.color ? { color: props.color } : {})
   }
 })
 

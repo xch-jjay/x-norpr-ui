@@ -1,12 +1,13 @@
 {
-  "name": "@x-norpr-ui/components",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "name": "@z-ui/components",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Internal component sources for z-ui.",
+  "main": "index.ts",
+  "types": "index.ts",
+  "scripts": {},
+  "dependencies": {
+    "@z-ui/utils": "workspace:*",
+    "vue": "^3.4.0"
+  }
 }
