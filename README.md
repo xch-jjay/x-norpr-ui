@@ -59,6 +59,8 @@ pnpm build
 pnpm docs:dev
 ```
 
+本地开发需要 Node.js 22.13 或更高版本。
+
 提交代码前建议运行完整检查：
 
 ```bash

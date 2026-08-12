@@ -4,7 +4,7 @@
 
 ## 开发环境
 
-- Node.js 20 或更高版本
+- Node.js 22.13 或更高版本
 - pnpm 11
 - Vue 3
 - TypeScript
