@@ -1,0 +1,50 @@
+name: 持续集成
+
+on:
+  push:
+    branches:
+      - master
+      - foundation
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: 检查项目
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 获取代码
+        uses: actions/checkout@v4
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 代码检查
+        run: pnpm lint
+
+      - name: 类型检查
+        run: pnpm typecheck
+
+      - name: 单元测试
+        run: pnpm test
+
+      - name: 构建组件库
+        run: pnpm build
+
+      - name: 构建文档
+        run: pnpm docs:build
+
+      - name: 检查 npm 包内容
+        run: pnpm pack:check

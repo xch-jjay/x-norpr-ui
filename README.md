@@ -59,6 +59,19 @@ pnpm build
 pnpm docs:dev
 ```
 
+提交代码前建议运行完整检查：
+
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+pnpm build
+pnpm docs:build
+pnpm pack:check
+```
+
+项目通过 GitHub Actions 自动检查 Pull Request。npm 发布只在推送版本标签后执行，具体流程见 [RELEASE.md](./RELEASE.md)。
+
 ## 许可证
 
 [MIT](./LICENSE)

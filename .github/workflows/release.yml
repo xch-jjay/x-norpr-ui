@@ -1,0 +1,39 @@
+name: 发布 npm
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: 发布 z-ui
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 获取代码
+        uses: actions/checkout@v4
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v6
+
+      - name: 安装 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 构建发布包
+        run: pnpm build
+
+      - name: 发布 npm
+        run: pnpm --filter z-ui publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
