@@ -1,6 +1,6 @@
 # 发布流程
 
-z-ui 使用 npm 包 `z-ui`，发布前必须确保 CI 通过。
+z-ui 使用 npm 作用域包 `@xch-jjay/z-ui`，发布前必须确保 CI 通过。
 
 发布环境使用 Node.js 22.13 及以上版本，以满足 pnpm 11 的运行要求。
 
@@ -27,11 +27,16 @@ git push origin v0.1.0
 
 推送 `v*.*.*` 标签后，GitHub Actions 会构建并发布 npm 包。
 
-发布工作流需要仓库 Secrets 中存在：
+发布工作流使用 npm Trusted Publishing，不需要配置长期 `NPM_TOKEN`。请在 npm 包设置中配置 GitHub Actions Trusted Publisher：
 
 ```text
-NPM_TOKEN
+Organization or user: xch-jjay
+Repository: x-norpr-ui
+Workflow filename: release.yml
+Allowed action: npm publish
 ```
+
+同时确认 GitHub Actions 工作流拥有 `id-token: write` 权限。
 
 文档站部署不需要额外的 token，使用 GitHub Actions 的 Pages 权限完成发布。
 

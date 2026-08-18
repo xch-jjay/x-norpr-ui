@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   publish:
@@ -23,9 +24,12 @@ jobs:
       - name: 安装 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: pnpm
+          node-version: 24
+          package-manager-cache: false
           registry-url: https://registry.npmjs.org
+
+      - name: 升级 npm
+        run: npm install --global npm@latest
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
@@ -34,6 +38,4 @@ jobs:
         run: pnpm build
 
       - name: 发布 npm
-        run: pnpm --filter z-ui publish --no-git-checks --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish ./packages/z-ui --access public
