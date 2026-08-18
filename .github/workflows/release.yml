@@ -24,9 +24,12 @@ jobs:
       - name: 安装 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           package-manager-cache: false
           registry-url: https://registry.npmjs.org
+
+      - name: 升级 npm
+        run: npm install --global npm@latest
 
       - name: 安装依赖
         run: pnpm install --frozen-lockfile
