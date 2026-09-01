@@ -3,6 +3,7 @@ import { AirplaneSharp } from '@vicons/ionicons5'
 import { ref } from 'vue'
 
 const loading = ref(false)
+const keyword = ref('')
 
 function handleClick() {
   loading.value = true
@@ -20,11 +21,18 @@ function handleClick() {
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>
+    <z-input v-model="keyword" clearable placeholder="请输入关键字" />
   </div>
 </template>
 
 <style scoped>
 z-button + z-button {
   margin-left: 8px;
+}
+
+z-input {
+  display: block;
+  max-width: 320px;
+  margin-top: 16px;
 }
 </style>
