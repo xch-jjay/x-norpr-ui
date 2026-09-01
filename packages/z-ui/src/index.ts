@@ -1,11 +1,11 @@
 import type { App } from 'vue'
-import { Button, Icon } from '@z-ui/components'
+import { Button, Icon, Input } from '@z-ui/components'
 import packageJson from '../package.json'
 
-export { Button, Icon }
+export { Button, Icon, Input }
 export * from '@z-ui/components'
 
-const components = [Button, Icon]
+const components = [Button, Icon, Input]
 
 export const version = packageJson.version
 
