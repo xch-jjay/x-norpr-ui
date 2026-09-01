@@ -19,6 +19,7 @@ export default defineConfig({
           items: [
             { text: '安装', link: '/guide/installation' },
             { text: '快速开始', link: '/guide/quick-start' },
+            { text: 'npm 发布手册', link: '/guide/npm-release' },
           ],
         },
       ],
