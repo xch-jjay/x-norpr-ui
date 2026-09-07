@@ -18,6 +18,8 @@
       "@z-ui/components": ["packages/components/index.ts"],
       "@z-ui/components/*": ["packages/components/*"],
       "z-ui": ["packages/z-ui/src/index.ts"],
+      "@xch-jjay/z-ui": ["packages/z-ui/src/index.ts"],
+      "@xch-jjay/z-ui/*": ["packages/z-ui/*"],
       "@z-ui/utils/*": ["packages/utils/*"],
       "@z-ui/theme-chalk/*": ["packages/theme-chalk/*"]
     }

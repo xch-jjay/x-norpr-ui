@@ -13,8 +13,10 @@ pnpm typecheck
 pnpm test
 pnpm build
 pnpm docs:build
-pnpm pack:check
+pnpm package:check
 ```
+
+`package:check` 会依次执行 npm 压缩包检查、`publint` 包元数据检查、`attw` 类型入口检查，以及临时消费者项目安装验证。
 
 确认 `packages/z-ui/package.json` 中的版本号已经更新，并在根目录 `CHANGELOG.md` 记录变更。
 

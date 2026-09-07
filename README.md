@@ -73,8 +73,10 @@ pnpm typecheck
 pnpm test
 pnpm build
 pnpm docs:build
-pnpm pack:check
+pnpm package:check
 ```
+
+其中 `pnpm package:check` 会检查最终 npm 压缩包内容、包元数据和导出类型，并在临时消费者项目中验证 ESM、CommonJS 以及 TypeScript 安装使用。
 
 项目通过 GitHub Actions 自动检查 Pull Request。npm 发布只在推送版本标签后执行，具体流程见 [RELEASE.md](./RELEASE.md)。
 

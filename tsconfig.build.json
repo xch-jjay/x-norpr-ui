@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./packages"
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.vue",
+    "typings/**/*.d.ts"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "node_modules",
+    "packages/z-ui/dist"
+  ]
+}

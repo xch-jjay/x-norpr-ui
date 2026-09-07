@@ -140,7 +140,7 @@ corepack pnpm typecheck
 corepack pnpm test
 corepack pnpm build
 corepack pnpm docs:build
-corepack pnpm pack:check
+corepack pnpm package:check
 ```
 
 如果只验证公开包，可以使用 pnpm filter：
@@ -150,7 +150,7 @@ corepack pnpm --filter @xch-jjay/z-ui build
 corepack pnpm --filter @xch-jjay/z-ui pack:check
 ```
 
-其中 `pack:check` 用来检查最终 npm 压缩包，重点确认以下内容：
+其中 `pack:check` 是底层的 npm 压缩包检查，重点确认以下内容：
 
 - 包名是 `@xch-jjay/z-ui`
 - 版本号正确
@@ -158,6 +158,19 @@ corepack pnpm --filter @xch-jjay/z-ui pack:check
 - README、LICENSE、CHANGELOG 存在
 - 没有把源码仓库无关文件打入发布包
 - 入口文件和类型声明存在
+
+完整的 `package:check` 还会执行以下检查：
+
+- `pack:check`：确认最终 npm 压缩包内容正确
+- `package:lint`：使用 `publint` 检查 `package.json`、`exports` 和发布文件
+- `package:types`：使用 `attw` 检查 ESM、CommonJS 和 TypeScript 类型入口
+- `package:consumer`：在临时消费者项目中安装压缩包，验证 ESM、CommonJS 和 TypeScript 实际使用
+
+因此，涉及组件导出、构建配置、类型声明或依赖变更时，应优先运行：
+
+```powershell
+corepack pnpm package:check
+```
 
 ## 6. 提交、推送和 Pull Request
 
@@ -284,7 +297,7 @@ corepack pnpm typecheck
 corepack pnpm test
 corepack pnpm build
 corepack pnpm docs:build
-corepack pnpm pack:check
+corepack pnpm package:check
 ```
 
 ### 9.2 通过 PR 合并到 master
@@ -441,7 +454,7 @@ npm view @xch-jjay/z-ui version --registry=https://registry.npmjs.org/
 [ ] test 通过
 [ ] build 通过
 [ ] docs:build 通过
-[ ] pack:check 通过
+[ ] package:check 通过（包含 pack、publint、attw 和消费者安装验证）
 [ ] packages/z-ui/package.json 版本号已更新
 [ ] CHANGELOG.md 已更新
 [ ] 中文提交信息清晰
