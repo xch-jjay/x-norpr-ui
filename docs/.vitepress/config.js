@@ -53,6 +53,7 @@ export default defineConfig({
             { text: 'Tag 标签', link: '/component/tag' },
             { text: 'Badge 徽标', link: '/component/badge' },
             { text: 'Empty 空状态', link: '/component/empty' },
+            { text: 'Pagination 分页', link: '/component/pagination' },
           ],
         },
         {

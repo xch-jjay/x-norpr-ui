@@ -1,0 +1,86 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(pagination) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--z-spacing-1);
+  color: var(--z-color-text-regular);
+  font-size: var(--z-font-size-base);
+
+  &__total {
+    margin-right: var(--z-spacing-2);
+    color: var(--z-color-text-secondary);
+    white-space: nowrap;
+  }
+
+  &__button,
+  &__item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--z-component-size-default);
+    height: var(--z-component-size-default);
+    padding: 0 6px;
+    border: 0;
+    border-radius: var(--z-border-radius-base);
+    color: inherit;
+    background: transparent;
+    font-size: inherit;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+      color: var(--z-color-primary);
+    }
+
+    &:focus-visible {
+      outline: var(--z-focus-outline);
+      outline-offset: 1px;
+    }
+
+    &:disabled {
+      color: var(--z-color-text-placeholder);
+      cursor: not-allowed;
+    }
+  }
+
+  &__item {
+    @include when(active) {
+      color: var(--z-color-white);
+      background: var(--z-color-primary);
+      cursor: default;
+    }
+
+    @include when(more) {
+      cursor: default;
+    }
+  }
+
+  @include when(background) {
+    .z-pagination__button,
+    .z-pagination__item {
+      background: var(--z-color-fill);
+    }
+
+    .z-pagination__item.is-active {
+      background: var(--z-color-primary);
+    }
+  }
+
+  @include m(small) {
+    .z-pagination__button,
+    .z-pagination__item {
+      min-width: var(--z-component-size-small);
+      height: var(--z-component-size-small);
+      font-size: var(--z-font-size-small);
+    }
+  }
+
+  @include m(large) {
+    .z-pagination__button,
+    .z-pagination__item {
+      min-width: var(--z-component-size-large);
+      height: var(--z-component-size-large);
+    }
+  }
+}

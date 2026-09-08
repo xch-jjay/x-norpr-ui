@@ -15,6 +15,7 @@ const formRef = ref<{ validate: () => Promise<boolean> }>()
 const formMessage = ref('')
 const showAlert = ref(true)
 const showDialog = ref(false)
+const currentPage = ref(1)
 
 async function validateProfile() {
   formMessage.value = (await formRef.value?.validate()) ? '校验通过' : '请完善表单'
@@ -57,6 +58,7 @@ function showLoading() {
     <z-empty description="暂无更多数据">
       <z-button type="primary">重新加载</z-button>
     </z-empty>
+    <z-pagination v-model:current-page="currentPage" :total="128" :page-size="10" background />
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>
