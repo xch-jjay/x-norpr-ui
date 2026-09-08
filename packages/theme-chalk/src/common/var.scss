@@ -1,0 +1,46 @@
+:root {
+  --z-color-white: #ffffff;
+  --z-color-black: #000000;
+  --z-color-primary: #409eff;
+  --z-color-primary-light-3: #66b1ff;
+  --z-color-primary-light-7: #b3d8ff;
+  --z-color-primary-light-9: #ecf5ff;
+  --z-color-success: #67c23a;
+  --z-color-success-light-3: #85ce61;
+  --z-color-warning: #e6a23c;
+  --z-color-warning-light-3: #ebb563;
+  --z-color-danger: #f56c6c;
+  --z-color-danger-light-3: #f78989;
+  --z-color-info: #909399;
+  --z-color-info-light-3: #a6a9ad;
+
+  --z-color-text-primary: #303133;
+  --z-color-text-regular: #606266;
+  --z-color-text-secondary: #909399;
+  --z-color-text-placeholder: #a8abb2;
+  --z-color-border: #dcdfe6;
+  --z-color-border-light: #e4e7ed;
+  --z-color-fill: #f5f7fa;
+  --z-color-fill-light: #fafafa;
+  --z-color-bg: #ffffff;
+
+  --z-font-size-small: 12px;
+  --z-font-size-base: 14px;
+  --z-font-size-large: 16px;
+  --z-line-height-base: 1.5;
+
+  --z-component-size-small: 24px;
+  --z-component-size-default: 32px;
+  --z-component-size-large: 40px;
+  --z-spacing-1: 4px;
+  --z-spacing-2: 8px;
+  --z-spacing-3: 12px;
+  --z-spacing-4: 16px;
+
+  --z-border-radius-small: 2px;
+  --z-border-radius-base: 4px;
+  --z-border-radius-round: 999px;
+  --z-transition-duration: 0.2s;
+  --z-transition-function: ease;
+  --z-focus-outline: 2px solid color-mix(in srgb, var(--z-color-primary) 35%, transparent);
+}
