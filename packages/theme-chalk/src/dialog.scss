@@ -1,0 +1,93 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(dialog) {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-dialog);
+  overflow: auto;
+  text-align: left;
+
+  @include when(center) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .z-dialog__content {
+      margin-top: 0;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 50%);
+  }
+
+  &__content {
+    position: relative;
+    box-sizing: border-box;
+    width: var(--z-dialog-width);
+    max-width: calc(100vw - 32px);
+    margin: var(--z-dialog-top) auto 50px;
+    border-radius: var(--z-border-radius-base);
+    background: var(--z-color-bg);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 18%);
+
+    @include when(fullscreen) {
+      width: 100%;
+      max-width: none;
+      min-height: 100%;
+      margin: 0;
+      border-radius: 0;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0 var(--z-spacing-4);
+    border-bottom: 1px solid var(--z-color-border-light);
+  }
+
+  &__title {
+    flex: 1;
+    color: var(--z-color-text-primary);
+    font-size: var(--z-font-size-large);
+    font-weight: 600;
+  }
+
+  &__close {
+    width: 28px;
+    height: 28px;
+    margin-left: var(--z-spacing-3);
+    padding: 0;
+    border: 0;
+    color: var(--z-color-text-secondary);
+    background: transparent;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--z-color-text-primary);
+    }
+
+    &:focus-visible {
+      outline: var(--z-focus-outline);
+      outline-offset: 1px;
+    }
+  }
+
+  &__body {
+    padding: var(--z-spacing-4);
+    color: var(--z-color-text-regular);
+    line-height: var(--z-line-height-base);
+  }
+
+  &__footer {
+    padding: 0 var(--z-spacing-4) var(--z-spacing-4);
+    text-align: right;
+  }
+
+}

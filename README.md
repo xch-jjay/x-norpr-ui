@@ -56,6 +56,7 @@ createApp(App).use(ZUI).mount('#app')
 - Form / FormItem
 - Alert
 - Message
+- Dialog
 
 首个稳定版本将围绕基础交互、表单、反馈、布局和展示场景逐步完善。
 

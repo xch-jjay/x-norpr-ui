@@ -44,6 +44,7 @@ export default defineConfig({
           items: [
             { text: 'Alert 提示', link: '/component/alert' },
             { text: 'Message 消息', link: '/component/message' },
+            { text: 'Dialog 对话框', link: '/component/dialog' },
           ],
         },
       ],

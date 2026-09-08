@@ -14,6 +14,7 @@ const profile = ref({ nickname: '' })
 const formRef = ref<{ validate: () => Promise<boolean> }>()
 const formMessage = ref('')
 const showAlert = ref(true)
+const showDialog = ref(false)
 
 async function validateProfile() {
   formMessage.value = (await formRef.value?.validate()) ? '校验通过' : '请完善表单'
@@ -65,6 +66,14 @@ function showMessage() {
     </z-form>
     <z-alert v-if="showAlert" title="保存成功" description="这是一个可关闭的提示。" type="success" show-icon @close="showAlert = false" />
     <z-button type="primary" @click="showMessage">显示 Message</z-button>
+    <z-button @click="showDialog = true">打开 Dialog</z-button>
+    <z-dialog v-model="showDialog" title="编辑资料">
+      <p>Dialog 支持遮罩、Escape、焦点回收和滚动锁定。</p>
+      <template #footer>
+        <z-button @click="showDialog = false">取消</z-button>
+        <z-button type="primary" @click="showDialog = false">保存</z-button>
+      </template>
+    </z-dialog>
   </div>
 </template>
 
