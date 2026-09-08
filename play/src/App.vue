@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { AirplaneSharp } from '@vicons/ionicons5'
+import { Message } from '@xch-jjay/z-ui'
 import { ref } from 'vue'
 
 const loading = ref(false)
@@ -23,6 +24,10 @@ function handleClick() {
   window.setTimeout(() => {
     loading.value = false
   }, 800)
+}
+
+function showMessage() {
+  Message.success('操作成功，消息会自动关闭')
 }
 </script>
 
@@ -59,6 +64,7 @@ function handleClick() {
       <span class="form-message">{{ formMessage }}</span>
     </z-form>
     <z-alert v-if="showAlert" title="保存成功" description="这是一个可关闭的提示。" type="success" show-icon @close="showAlert = false" />
+    <z-button type="primary" @click="showMessage">显示 Message</z-button>
   </div>
 </template>
 

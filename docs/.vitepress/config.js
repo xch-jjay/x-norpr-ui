@@ -43,6 +43,7 @@ export default defineConfig({
           text: '反馈组件',
           items: [
             { text: 'Alert 提示', link: '/component/alert' },
+            { text: 'Message 消息', link: '/component/message' },
           ],
         },
       ],

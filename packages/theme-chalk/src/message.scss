@@ -1,0 +1,92 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(message-container) {
+  position: fixed;
+  top: var(--z-spacing-4);
+  left: 50%;
+  z-index: var(--z-index-message);
+  display: flex;
+  flex-direction: column;
+  gap: var(--z-spacing-2);
+  width: min(420px, calc(100vw - 32px));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+@include b(message) {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--z-component-size-default);
+  padding: var(--z-spacing-2) var(--z-spacing-3);
+  border: 1px solid var(--z-message-border-color);
+  border-radius: var(--z-border-radius-base);
+  color: var(--z-message-color);
+  background: var(--z-message-bg-color);
+  box-shadow: var(--z-shadow-message);
+  font-size: var(--z-font-size-base);
+  line-height: var(--z-line-height-base);
+  pointer-events: auto;
+
+  --z-message-color: var(--z-color-info);
+  --z-message-bg-color: #f4f4f5;
+  --z-message-border-color: #d3d4d6;
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 18px;
+    height: 18px;
+    margin-right: var(--z-spacing-2);
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-size: var(--z-font-size-small);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__close {
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    margin-left: var(--z-spacing-3);
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: var(--z-focus-outline);
+      outline-offset: 1px;
+    }
+  }
+
+  @include m(success) {
+    --z-message-color: var(--z-color-success);
+    --z-message-bg-color: #f0f9eb;
+    --z-message-border-color: #c2e7b0;
+  }
+
+  @include m(warning) {
+    --z-message-color: var(--z-color-warning);
+    --z-message-bg-color: #fdf6ec;
+    --z-message-border-color: #f5dab1;
+  }
+
+  @include m(danger) {
+    --z-message-color: var(--z-color-danger);
+    --z-message-bg-color: #fef0f0;
+    --z-message-border-color: #fbc4c4;
+  }
+}

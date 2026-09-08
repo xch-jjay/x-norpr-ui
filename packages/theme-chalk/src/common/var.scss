@@ -43,4 +43,6 @@
   --z-transition-duration: 0.2s;
   --z-transition-function: ease;
   --z-focus-outline: 2px solid color-mix(in srgb, var(--z-color-primary) 35%, transparent);
+  --z-index-message: 2000;
+  --z-shadow-message: 0 4px 12px rgb(0 0 0 / 12%);
 }
