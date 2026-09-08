@@ -1,0 +1,110 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(input-number) {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--z-component-size-default);
+  border: 1px solid var(--z-color-border);
+  border-radius: var(--z-border-radius-base);
+  color: var(--z-color-text-regular);
+  background: var(--z-color-bg);
+  transition: border-color var(--z-transition-duration) var(--z-transition-function),
+    box-shadow var(--z-transition-duration) var(--z-transition-function);
+
+  &:focus-within,
+  &.is-focus {
+    border-color: var(--z-color-primary);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--z-color-primary) 18%, transparent);
+  }
+
+  &__inner {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0 var(--z-spacing-2);
+    border: 0;
+    outline: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    font-size: var(--z-font-size-base);
+    text-align: center;
+
+    appearance: textfield;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      margin: 0;
+      appearance: none;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 var(--z-component-size-default);
+    height: 100%;
+    padding: 0;
+    border: 0;
+    color: var(--z-color-text-secondary);
+    background: transparent;
+    font-size: var(--z-font-size-large);
+    line-height: 1;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--z-color-primary);
+      background: var(--z-color-fill);
+    }
+
+    &:focus-visible {
+      outline: var(--z-focus-outline);
+      outline-offset: -2px;
+    }
+
+    &:disabled {
+      color: var(--z-color-text-placeholder);
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(small) {
+    height: var(--z-component-size-small);
+
+    .z-input-number__inner {
+      font-size: var(--z-font-size-small);
+    }
+
+    .z-input-number__button {
+      flex-basis: var(--z-component-size-small);
+      font-size: var(--z-font-size-base);
+    }
+  }
+
+  @include m(large) {
+    height: var(--z-component-size-large);
+
+    .z-input-number__inner {
+      font-size: var(--z-font-size-base);
+    }
+
+    .z-input-number__button {
+      flex-basis: var(--z-component-size-large);
+    }
+  }
+
+  @include when(disabled) {
+    color: var(--z-color-text-placeholder);
+    background: var(--z-color-fill);
+    cursor: not-allowed;
+  }
+
+  @include when(readonly) {
+    background: var(--z-color-fill-light);
+  }
+}
+

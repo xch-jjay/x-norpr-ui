@@ -34,6 +34,7 @@ export default defineConfig({
             { text: 'Checkbox 复选框', link: '/component/checkbox' },
             { text: 'Radio 单选框', link: '/component/radio' },
             { text: 'Switch 开关', link: '/component/switch' },
+            { text: 'InputNumber 数字输入', link: '/component/input-number' },
           ],
         },
       ],

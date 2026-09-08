@@ -7,6 +7,7 @@ const keyword = ref('')
 const preferences = ref(['vue'])
 const layout = ref('comfortable')
 const autoSave = ref(true)
+const quantity = ref(2)
 
 function handleClick() {
   loading.value = true
@@ -35,6 +36,7 @@ function handleClick() {
       <z-radio label="compact">紧凑</z-radio>
     </z-radio-group>
     <z-switch v-model="autoSave" active-text="自动保存" inactive-text="手动保存" />
+    <z-input-number v-model="quantity" :min="0" :max="10" />
   </div>
 </template>
 
