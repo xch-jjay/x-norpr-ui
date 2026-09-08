@@ -9,6 +9,13 @@ const layout = ref('comfortable')
 const autoSave = ref(true)
 const quantity = ref(2)
 const framework = ref('vue')
+const profile = ref({ nickname: '' })
+const formRef = ref<{ validate: () => Promise<boolean> }>()
+const formMessage = ref('')
+
+async function validateProfile() {
+  formMessage.value = (await formRef.value?.validate()) ? '校验通过' : '请完善表单'
+}
 
 function handleClick() {
   loading.value = true
@@ -43,6 +50,13 @@ function handleClick() {
       <z-option label="React" value="react" />
       <z-option label="Svelte" value="svelte" />
     </z-select>
+    <z-form ref="formRef" :model="profile" :rules="{ nickname: { required: true, message: '请输入昵称' } }">
+      <z-form-item prop="nickname" label="昵称">
+        <z-input v-model="profile.nickname" placeholder="请输入昵称" />
+      </z-form-item>
+      <z-button type="primary" @click="validateProfile">校验表单</z-button>
+      <span class="form-message">{{ formMessage }}</span>
+    </z-form>
   </div>
 </template>
 
@@ -62,5 +76,16 @@ z-checkbox-group,
 z-radio-group {
   display: flex;
   margin-top: 16px;
+}
+
+z-form {
+  max-width: 480px;
+  margin-top: 24px;
+  text-align: left;
+}
+
+.form-message {
+  margin-left: 12px;
+  color: #606266;
 }
 </style>

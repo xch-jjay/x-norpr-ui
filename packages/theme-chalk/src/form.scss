@@ -1,0 +1,62 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(form) {
+  display: block;
+  width: 100%;
+
+  @include m(small) {
+    font-size: var(--z-font-size-small);
+  }
+
+  @include m(large) {
+    font-size: var(--z-font-size-large);
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+  }
+}
+
+@include b(form-item) {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  min-height: var(--z-component-size-default);
+  margin-bottom: var(--z-spacing-4);
+
+  &__label {
+    box-sizing: border-box;
+    flex: 0 0 var(--z-form-label-width);
+    padding-right: var(--z-spacing-3);
+    color: var(--z-color-text-regular);
+    line-height: var(--z-component-size-default);
+    text-align: right;
+  }
+
+  &__required {
+    margin-left: var(--z-spacing-1);
+    color: var(--z-color-danger);
+  }
+
+  &__content {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__error {
+    margin-top: var(--z-spacing-1);
+    color: var(--z-color-danger);
+    font-size: var(--z-font-size-small);
+    line-height: var(--z-line-height-base);
+  }
+
+  @include when(error) {
+    .z-input__inner,
+    .z-input-number,
+    .z-select__trigger {
+      border-color: var(--z-color-danger);
+    }
+  }
+}
+
