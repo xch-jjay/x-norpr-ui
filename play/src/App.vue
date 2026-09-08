@@ -5,6 +5,7 @@ import { ref } from 'vue'
 const loading = ref(false)
 const keyword = ref('')
 const preferences = ref(['vue'])
+const layout = ref('comfortable')
 
 function handleClick() {
   loading.value = true
@@ -28,6 +29,10 @@ function handleClick() {
       <z-checkbox label="vue">Vue 3</z-checkbox>
       <z-checkbox label="ts">TypeScript</z-checkbox>
     </z-checkbox-group>
+    <z-radio-group v-model="layout">
+      <z-radio label="comfortable">舒适</z-radio>
+      <z-radio label="compact">紧凑</z-radio>
+    </z-radio-group>
   </div>
 </template>
 
@@ -43,7 +48,8 @@ z-input {
 }
 
 z-checkbox,
-z-checkbox-group {
+z-checkbox-group,
+z-radio-group {
   display: flex;
   margin-top: 16px;
 }

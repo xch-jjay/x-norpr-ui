@@ -32,6 +32,7 @@ export default defineConfig({
             { text: 'Icon 图标', link: '/component/icon' },
             { text: 'Input 输入框', link: '/component/input' },
             { text: 'Checkbox 复选框', link: '/component/checkbox' },
+            { text: 'Radio 单选框', link: '/component/radio' },
           ],
         },
       ],
