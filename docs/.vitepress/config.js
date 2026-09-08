@@ -56,6 +56,7 @@ export default defineConfig({
             { text: 'Pagination 分页', link: '/component/pagination' },
             { text: 'Breadcrumb 面包屑', link: '/component/breadcrumb' },
             { text: 'Tabs 标签页', link: '/component/tabs' },
+            { text: 'Table 表格', link: '/component/table' },
           ],
         },
         {

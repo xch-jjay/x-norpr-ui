@@ -1,0 +1,59 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(table) {
+  width: 100%;
+  overflow: hidden;
+  color: var(--z-color-text-regular);
+  font-size: var(--z-font-size-base);
+
+  table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    height: 48px;
+    box-sizing: border-box;
+    padding: 0 var(--z-spacing-3);
+    border-bottom: 1px solid var(--z-color-border-light);
+    text-align: left;
+  }
+
+  th {
+    color: var(--z-color-text-primary);
+    background: var(--z-color-fill-light);
+    font-weight: 600;
+    user-select: none;
+  }
+
+  th[aria-sort] { cursor: pointer; }
+
+  tr:hover td { background: var(--z-color-fill-light); }
+
+  @include when(border) {
+    th,
+    td { border: 1px solid var(--z-color-border-light); }
+  }
+
+  @include when(stripe) {
+    tbody tr:nth-child(even) td { background: var(--z-color-fill); }
+  }
+
+  &__cell {
+    @include m(center) { text-align: center; }
+    @include m(right) { text-align: right; }
+  }
+
+  &__sort-icon {
+    margin-left: var(--z-spacing-1);
+    color: var(--z-color-primary);
+  }
+
+  &__empty {
+    height: 120px;
+    color: var(--z-color-text-secondary);
+    text-align: center;
+  }
+}

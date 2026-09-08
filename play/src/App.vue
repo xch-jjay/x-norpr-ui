@@ -11,6 +11,10 @@ const autoSave = ref(true)
 const quantity = ref(2)
 const framework = ref('vue')
 const profile = ref({ nickname: '' })
+const users = ref([
+  { id: 1, name: '小明', role: '管理员', age: 18 },
+  { id: 2, name: '小红', role: '编辑', age: 20 },
+])
 const formRef = ref<{ validate: () => Promise<boolean> }>()
 const formMessage = ref('')
 const showAlert = ref(true)
@@ -68,6 +72,11 @@ function showLoading() {
       <z-tab-pane name="vue" label="Vue 3">Vue 3 组件示例</z-tab-pane>
       <z-tab-pane name="react" label="React">当前项目仅支持 Vue 3</z-tab-pane>
     </z-tabs>
+    <z-table :data="users" border stripe>
+      <z-table-column prop="name" label="姓名" />
+      <z-table-column prop="role" label="角色" />
+      <z-table-column prop="age" label="年龄" sortable />
+    </z-table>
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>
