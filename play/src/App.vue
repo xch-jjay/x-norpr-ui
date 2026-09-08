@@ -8,6 +8,7 @@ const preferences = ref(['vue'])
 const layout = ref('comfortable')
 const autoSave = ref(true)
 const quantity = ref(2)
+const framework = ref('vue')
 
 function handleClick() {
   loading.value = true
@@ -37,6 +38,11 @@ function handleClick() {
     </z-radio-group>
     <z-switch v-model="autoSave" active-text="自动保存" inactive-text="手动保存" />
     <z-input-number v-model="quantity" :min="0" :max="10" />
+    <z-select v-model="framework" placeholder="选择框架">
+      <z-option label="Vue 3" value="vue" />
+      <z-option label="React" value="react" />
+      <z-option label="Svelte" value="svelte" />
+    </z-select>
   </div>
 </template>
 

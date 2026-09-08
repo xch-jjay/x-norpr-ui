@@ -35,6 +35,7 @@ export default defineConfig({
             { text: 'Radio 单选框', link: '/component/radio' },
             { text: 'Switch 开关', link: '/component/switch' },
             { text: 'InputNumber 数字输入', link: '/component/input-number' },
+            { text: 'Select 选择器', link: '/component/select' },
           ],
         },
       ],
