@@ -1,11 +1,11 @@
 import type { App } from 'vue'
-import { Button, Icon, Input } from '@z-ui/components'
+import { Button, Checkbox, CheckboxGroup, Icon, Input } from '@z-ui/components'
 import packageJson from '../package.json'
 
-export { Button, Icon, Input }
+export { Button, Checkbox, CheckboxGroup, Icon, Input }
 export * from '@z-ui/components'
 
-const components = [Button, Icon, Input]
+const components = [Button, Checkbox, CheckboxGroup, Icon, Input]
 
 export const version = packageJson.version
 

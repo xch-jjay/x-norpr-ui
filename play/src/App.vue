@@ -4,6 +4,7 @@ import { ref } from 'vue'
 
 const loading = ref(false)
 const keyword = ref('')
+const preferences = ref(['vue'])
 
 function handleClick() {
   loading.value = true
@@ -22,6 +23,11 @@ function handleClick() {
       <AirplaneSharp />
     </z-icon>
     <z-input v-model="keyword" clearable placeholder="请输入关键字" />
+    <z-checkbox v-model="loading">启用自动保存</z-checkbox>
+    <z-checkbox-group v-model="preferences">
+      <z-checkbox label="vue">Vue 3</z-checkbox>
+      <z-checkbox label="ts">TypeScript</z-checkbox>
+    </z-checkbox-group>
   </div>
 </template>
 
@@ -33,6 +39,12 @@ z-button + z-button {
 z-input {
   display: block;
   max-width: 320px;
+  margin-top: 16px;
+}
+
+z-checkbox,
+z-checkbox-group {
+  display: flex;
   margin-top: 16px;
 }
 </style>

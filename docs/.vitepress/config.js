@@ -31,6 +31,7 @@ export default defineConfig({
             { text: 'Button 按钮', link: '/component/button' },
             { text: 'Icon 图标', link: '/component/icon' },
             { text: 'Input 输入框', link: '/component/input' },
+            { text: 'Checkbox 复选框', link: '/component/checkbox' },
           ],
         },
       ],
