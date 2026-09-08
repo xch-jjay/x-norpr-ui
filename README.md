@@ -58,6 +58,8 @@ createApp(App).use(ZUI).mount('#app')
 - Message
 - Dialog
 - Loading
+- Space
+- Divider
 
 首个稳定版本将围绕基础交互、表单、反馈、布局和展示场景逐步完善。
 

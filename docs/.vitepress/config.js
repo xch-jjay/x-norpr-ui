@@ -40,6 +40,13 @@ export default defineConfig({
           ],
         },
         {
+          text: '布局组件',
+          items: [
+            { text: 'Space 间距', link: '/component/space' },
+            { text: 'Divider 分割线', link: '/component/divider' },
+          ],
+        },
+        {
           text: '反馈组件',
           items: [
             { text: 'Alert 提示', link: '/component/alert' },

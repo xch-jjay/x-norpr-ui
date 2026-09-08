@@ -1,0 +1,76 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(divider) {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  margin: var(--z-spacing-4) 0;
+  border-top: 1px var(--z-divider-border-style) var(--z-color-border);
+  color: var(--z-color-text-secondary);
+
+  --z-divider-border-style: solid;
+
+  @include m(dashed) {
+    --z-divider-border-style: dashed;
+  }
+
+  @include m(dotted) {
+    --z-divider-border-style: dotted;
+  }
+
+  @include when(with-content) {
+    border-top: 0;
+
+    .z-divider__line {
+      flex: 1;
+      border-top: 1px var(--z-divider-border-style) var(--z-color-border);
+    }
+
+    .z-divider__content {
+      margin: 0 var(--z-spacing-3);
+      font-size: var(--z-font-size-small);
+      white-space: nowrap;
+    }
+  }
+
+  @include when(left) {
+    .z-divider__line--before {
+      flex: 0 0 var(--z-spacing-4);
+    }
+  }
+
+  @include when(right) {
+    .z-divider__line--after {
+      flex: 0 0 var(--z-spacing-4);
+    }
+  }
+
+  @include m(vertical) {
+    display: inline-flex;
+    width: 1px;
+    height: 1em;
+    margin: 0 var(--z-spacing-3);
+    border-top: 0;
+    border-left: 1px var(--z-divider-border-style) var(--z-color-border);
+    vertical-align: middle;
+
+    @include when(with-content) {
+      width: auto;
+      height: auto;
+      border-left: 0;
+      flex-direction: column;
+
+      .z-divider__line {
+        width: 1px;
+        min-height: var(--z-spacing-2);
+        border-top: 0;
+        border-left: 1px var(--z-divider-border-style) var(--z-color-border);
+      }
+
+      .z-divider__content {
+        margin: var(--z-spacing-2) 0;
+        writing-mode: vertical-rl;
+      }
+    }
+  }
+}

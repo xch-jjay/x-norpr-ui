@@ -42,6 +42,11 @@ function showLoading() {
     <z-button type="primary" @click="handleClick">保存</z-button>
     <z-button type="success">成功</z-button>
     <z-button type="danger" :loading="loading">删除</z-button>
+    <z-space size="small">
+      <z-button>批量操作</z-button>
+      <z-button type="primary">导出</z-button>
+    </z-space>
+    <z-divider content="表单演示" content-position="left" />
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>
