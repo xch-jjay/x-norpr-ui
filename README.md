@@ -65,6 +65,8 @@ createApp(App).use(ZUI).mount('#app')
 - Badge
 - Empty
 - Pagination
+- Breadcrumb
+- Tabs / TabPane
 
 首个稳定版本将围绕基础交互、表单、反馈、布局和展示场景逐步完善。
 

@@ -1,0 +1,31 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(breadcrumb) {
+  display: flex;
+  align-items: center;
+  color: var(--z-color-text-secondary);
+  font-size: var(--z-font-size-base);
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  &__separator {
+    margin: 0 var(--z-spacing-2);
+    color: var(--z-color-text-placeholder);
+  }
+
+  &__link {
+    color: var(--z-color-text-regular);
+    text-decoration: none;
+
+    &:hover { color: var(--z-color-primary); }
+    &:focus-visible { outline: var(--z-focus-outline); }
+  }
+
+  &__text { color: var(--z-color-text-secondary); }
+
+  @include when(current) { .z-breadcrumb__text { color: var(--z-color-text-primary); font-weight: 600; } }
+  @include when(disabled) { .z-breadcrumb__text { color: var(--z-color-text-placeholder); cursor: not-allowed; } }
+}

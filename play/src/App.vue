@@ -59,6 +59,15 @@ function showLoading() {
       <z-button type="primary">重新加载</z-button>
     </z-empty>
     <z-pagination v-model:current-page="currentPage" :total="128" :page-size="10" background />
+    <z-breadcrumb separator=">">
+      <z-breadcrumb-item to="/">首页</z-breadcrumb-item>
+      <z-breadcrumb-item to="/demo">组件</z-breadcrumb-item>
+      <z-breadcrumb-item current>演示</z-breadcrumb-item>
+    </z-breadcrumb>
+    <z-tabs v-model="framework" type="card">
+      <z-tab-pane name="vue" label="Vue 3">Vue 3 组件示例</z-tab-pane>
+      <z-tab-pane name="react" label="React">当前项目仅支持 Vue 3</z-tab-pane>
+    </z-tabs>
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>

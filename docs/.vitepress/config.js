@@ -54,6 +54,8 @@ export default defineConfig({
             { text: 'Badge 徽标', link: '/component/badge' },
             { text: 'Empty 空状态', link: '/component/empty' },
             { text: 'Pagination 分页', link: '/component/pagination' },
+            { text: 'Breadcrumb 面包屑', link: '/component/breadcrumb' },
+            { text: 'Tabs 标签页', link: '/component/tabs' },
           ],
         },
         {
