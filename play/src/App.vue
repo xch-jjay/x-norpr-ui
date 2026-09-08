@@ -6,6 +6,7 @@ const loading = ref(false)
 const keyword = ref('')
 const preferences = ref(['vue'])
 const layout = ref('comfortable')
+const autoSave = ref(true)
 
 function handleClick() {
   loading.value = true
@@ -33,6 +34,7 @@ function handleClick() {
       <z-radio label="comfortable">舒适</z-radio>
       <z-radio label="compact">紧凑</z-radio>
     </z-radio-group>
+    <z-switch v-model="autoSave" active-text="自动保存" inactive-text="手动保存" />
   </div>
 </template>
 
