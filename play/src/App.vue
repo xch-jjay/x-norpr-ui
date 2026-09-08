@@ -47,6 +47,16 @@ function showLoading() {
       <z-button type="primary">导出</z-button>
     </z-space>
     <z-divider content="表单演示" content-position="left" />
+    <z-card header="展示组件" shadow="hover">
+      <z-space size="small">
+        <z-tag type="success">已完成</z-tag>
+        <z-badge :value="8"><z-button>通知</z-button></z-badge>
+      </z-space>
+      <template #footer>Card、Tag 和 Badge</template>
+    </z-card>
+    <z-empty description="暂无更多数据">
+      <z-button type="primary">重新加载</z-button>
+    </z-empty>
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>

@@ -1,11 +1,11 @@
 import type { App } from 'vue'
-import { Alert, Button, Checkbox, CheckboxGroup, Dialog, Divider, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Radio, RadioGroup, Select, Space, Switch } from '@z-ui/components'
+import { Alert, Badge, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Radio, RadioGroup, Select, Space, Switch, Tag } from '@z-ui/components'
 import packageJson from '../package.json'
 
-export { Alert, Button, Checkbox, CheckboxGroup, Dialog, Divider, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Radio, RadioGroup, Select, Space, Switch }
+export { Alert, Badge, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Radio, RadioGroup, Select, Space, Switch, Tag }
 export * from '@z-ui/components'
 
-const components = [Alert, Button, Checkbox, CheckboxGroup, Dialog, Divider, Form, FormItem, Icon, Input, InputNumber, Loading, Message, Option, Radio, RadioGroup, Select, Space, Switch]
+const components = [Alert, Badge, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, Message, Option, Radio, RadioGroup, Select, Space, Switch, Tag]
 
 export const version = packageJson.version
 

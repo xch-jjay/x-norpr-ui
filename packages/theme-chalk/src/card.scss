@@ -1,0 +1,41 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(card) {
+  overflow: hidden;
+  border: 1px solid var(--z-color-border-light);
+  border-radius: var(--z-border-radius-base);
+  background: var(--z-color-bg);
+  color: var(--z-color-text-regular);
+
+  @include m(always) {
+    box-shadow: var(--z-shadow-card);
+  }
+
+  @include m(hover) {
+    transition: box-shadow var(--z-transition-duration) var(--z-transition-function);
+
+    &:hover {
+      box-shadow: var(--z-shadow-card);
+    }
+  }
+
+  @include m(never) {
+    box-shadow: none;
+  }
+
+  &__header {
+    padding: var(--z-spacing-3) var(--z-spacing-4);
+    border-bottom: 1px solid var(--z-color-border-light);
+    color: var(--z-color-text-primary);
+    font-weight: 600;
+  }
+
+  &__body {
+    box-sizing: border-box;
+  }
+
+  &__footer {
+    padding: var(--z-spacing-3) var(--z-spacing-4);
+    border-top: 1px solid var(--z-color-border-light);
+  }
+}

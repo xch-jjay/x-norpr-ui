@@ -1,0 +1,57 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(tag) {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  height: 24px;
+  padding: 0 var(--z-spacing-2);
+  border: 1px solid var(--z-tag-border-color);
+  border-radius: var(--z-border-radius-base);
+  color: var(--z-tag-color);
+  background: var(--z-tag-bg-color);
+  font-size: var(--z-font-size-small);
+  line-height: 22px;
+
+  --z-tag-color: var(--z-color-info);
+  --z-tag-bg-color: var(--z-color-info-light-3);
+  --z-tag-border-color: var(--z-color-info-light-3);
+  --z-tag-custom-color: var(--z-tag-color);
+
+  @include m(success) { --z-tag-color: var(--z-color-success); --z-tag-bg-color: #f0f9eb; --z-tag-border-color: #c2e7b0; }
+  @include m(info) { --z-tag-color: var(--z-color-info); --z-tag-bg-color: #f4f4f5; --z-tag-border-color: #d3d4d6; }
+  @include m(warning) { --z-tag-color: var(--z-color-warning); --z-tag-bg-color: #fdf6ec; --z-tag-border-color: #f5dab1; }
+  @include m(danger) { --z-tag-color: var(--z-color-danger); --z-tag-bg-color: #fef0f0; --z-tag-border-color: #fbc4c4; }
+
+  @include m(dark) {
+    color: var(--z-color-white);
+    background: var(--z-tag-custom-color);
+    border-color: var(--z-tag-custom-color);
+  }
+
+  @include m(plain) {
+    background: transparent;
+  }
+
+  @include m(small) { height: 20px; padding: 0 6px; line-height: 18px; }
+  @include m(large) { height: 32px; padding: 0 12px; font-size: var(--z-font-size-base); line-height: 30px; }
+
+  @include when(round) { border-radius: var(--z-border-radius-round); }
+  @include when(hit) { border-color: currentColor; }
+
+  &__close {
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: inherit;
+    background: transparent;
+    line-height: 14px;
+    cursor: pointer;
+
+    &:hover { background: rgb(0 0 0 / 12%); }
+    &:focus-visible { outline: var(--z-focus-outline); }
+  }
+}

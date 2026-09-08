@@ -47,6 +47,15 @@ export default defineConfig({
           ],
         },
         {
+          text: '展示组件',
+          items: [
+            { text: 'Card 卡片', link: '/component/card' },
+            { text: 'Tag 标签', link: '/component/tag' },
+            { text: 'Badge 徽标', link: '/component/badge' },
+            { text: 'Empty 空状态', link: '/component/empty' },
+          ],
+        },
+        {
           text: '反馈组件',
           items: [
             { text: 'Alert 提示', link: '/component/alert' },

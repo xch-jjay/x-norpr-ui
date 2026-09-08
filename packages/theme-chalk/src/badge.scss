@@ -1,0 +1,44 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(badge) {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+
+  --z-badge-custom-color: var(--z-color-danger);
+
+  &__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    padding: 0 5px;
+    border: 1px solid var(--z-color-white);
+    border-radius: 9px;
+    color: var(--z-color-white);
+    background: var(--z-badge-custom-color);
+    font-size: var(--z-font-size-small);
+    line-height: 16px;
+    text-align: center;
+    transform: translate(50%, -50%);
+    white-space: nowrap;
+  }
+
+  @include m(primary) { --z-badge-custom-color: var(--z-color-primary); }
+  @include m(success) { --z-badge-custom-color: var(--z-color-success); }
+  @include m(warning) { --z-badge-custom-color: var(--z-color-warning); }
+  @include m(danger) { --z-badge-custom-color: var(--z-color-danger); }
+  @include m(info) { --z-badge-custom-color: var(--z-color-info); }
+
+  @include when(dot) {
+    .z-badge__content {
+      width: 8px;
+      min-width: 0;
+      height: 8px;
+      padding: 0;
+      border-radius: 50%;
+    }
+  }
+}
