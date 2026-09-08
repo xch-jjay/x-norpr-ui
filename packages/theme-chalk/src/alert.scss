@@ -1,0 +1,89 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(alert) {
+  --z-alert-color: var(--z-color-info);
+  --z-alert-bg-color: #f4f4f5;
+  --z-alert-border-color: #d3d4d6;
+
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  padding: var(--z-spacing-3) var(--z-spacing-4);
+  border: 1px solid var(--z-alert-border-color);
+  border-radius: var(--z-border-radius-base);
+  color: var(--z-alert-color);
+  background: var(--z-alert-bg-color);
+  font-size: var(--z-font-size-base);
+  line-height: var(--z-line-height-base);
+
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 20px;
+    height: 20px;
+    margin-right: var(--z-spacing-2);
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-weight: 600;
+  }
+
+  &__description {
+    margin-top: var(--z-spacing-1);
+  }
+
+  &__close {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    width: 20px;
+    height: 20px;
+    margin-left: var(--z-spacing-3);
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: var(--z-focus-outline);
+      outline-offset: 1px;
+    }
+  }
+
+  @include m(success) {
+    --z-alert-color: var(--z-color-success);
+    --z-alert-bg-color: #f0f9eb;
+    --z-alert-border-color: #c2e7b0;
+  }
+
+  @include m(warning) {
+    --z-alert-color: var(--z-color-warning);
+    --z-alert-bg-color: #fdf6ec;
+    --z-alert-border-color: #f5dab1;
+  }
+
+  @include m(danger) {
+    --z-alert-color: var(--z-color-danger);
+    --z-alert-bg-color: #fef0f0;
+    --z-alert-border-color: #fbc4c4;
+  }
+
+  @include when(center) {
+    justify-content: center;
+    text-align: center;
+  }
+}
+

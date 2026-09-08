@@ -39,6 +39,12 @@ export default defineConfig({
             { text: 'Form 表单', link: '/component/form' },
           ],
         },
+        {
+          text: '反馈组件',
+          items: [
+            { text: 'Alert 提示', link: '/component/alert' },
+          ],
+        },
       ],
     },
     socialLinks: [{ icon: 'github', link: 'https://github.com/xch-jjay/x-norpr-ui' }],

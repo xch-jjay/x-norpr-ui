@@ -12,6 +12,7 @@ const framework = ref('vue')
 const profile = ref({ nickname: '' })
 const formRef = ref<{ validate: () => Promise<boolean> }>()
 const formMessage = ref('')
+const showAlert = ref(true)
 
 async function validateProfile() {
   formMessage.value = (await formRef.value?.validate()) ? '校验通过' : '请完善表单'
@@ -57,6 +58,7 @@ function handleClick() {
       <z-button type="primary" @click="validateProfile">校验表单</z-button>
       <span class="form-message">{{ formMessage }}</span>
     </z-form>
+    <z-alert v-if="showAlert" title="保存成功" description="这是一个可关闭的提示。" type="success" show-icon @close="showAlert = false" />
   </div>
 </template>
 
