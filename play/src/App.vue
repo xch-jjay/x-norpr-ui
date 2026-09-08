@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { AirplaneSharp } from '@vicons/ionicons5'
-import { Message } from '@xch-jjay/z-ui'
+import { LoadingService, Message } from '@xch-jjay/z-ui'
 import { ref } from 'vue'
 
 const loading = ref(false)
@@ -29,6 +29,11 @@ function handleClick() {
 
 function showMessage() {
   Message.success('操作成功，消息会自动关闭')
+}
+
+function showLoading() {
+  const loading = LoadingService({ text: '处理中' })
+  window.setTimeout(loading.close, 800)
 }
 </script>
 
@@ -66,6 +71,7 @@ function showMessage() {
     </z-form>
     <z-alert v-if="showAlert" title="保存成功" description="这是一个可关闭的提示。" type="success" show-icon @close="showAlert = false" />
     <z-button type="primary" @click="showMessage">显示 Message</z-button>
+    <z-button @click="showLoading">显示 Loading</z-button>
     <z-button @click="showDialog = true">打开 Dialog</z-button>
     <z-dialog v-model="showDialog" title="编辑资料">
       <p>Dialog 支持遮罩、Escape、焦点回收和滚动锁定。</p>

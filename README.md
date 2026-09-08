@@ -57,6 +57,7 @@ createApp(App).use(ZUI).mount('#app')
 - Alert
 - Message
 - Dialog
+- Loading
 
 首个稳定版本将围绕基础交互、表单、反馈、布局和展示场景逐步完善。
 
