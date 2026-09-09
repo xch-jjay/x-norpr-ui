@@ -78,3 +78,17 @@ import './theme.css'
 ```
 
 组件会从自身或祖先元素读取 CSS 变量，因此局部主题不需要复制组件样式，也不需要重新构建 npm 包。
+
+## 暗色主题
+
+在根元素或业务容器上添加 `data-z-theme="dark"` 即可启用内置暗色变量：
+
+```html
+<div data-z-theme="dark">
+  <z-card>
+    <z-button type="primary">暗色主题按钮</z-button>
+  </z-card>
+</div>
+```
+
+暗色主题覆盖背景、文本、边框、填充、状态色浅色变体和阴影。组件仍然使用同一套 API；如果业务需要跟随系统主题，可以在应用层根据 `prefers-color-scheme` 切换 `data-z-theme` 属性。

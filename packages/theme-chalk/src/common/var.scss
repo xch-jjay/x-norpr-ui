@@ -51,3 +51,35 @@
   --z-shadow-message: 0 4px 12px rgb(0 0 0 / 12%);
   --z-shadow-card: 0 2px 12px rgb(0 0 0 / 10%);
 }
+
+[data-z-theme='dark'] {
+  color-scheme: dark;
+
+  --z-color-white: #ffffff;
+  --z-color-black: #000000;
+  --z-color-primary: #409eff;
+  --z-color-primary-light-3: #79bbff;
+  --z-color-primary-light-7: #2f5d8f;
+  --z-color-primary-light-9: #1d3048;
+  --z-color-success: #67c23a;
+  --z-color-success-light-3: #95d475;
+  --z-color-warning: #e6a23c;
+  --z-color-warning-light-3: #eebe77;
+  --z-color-danger: #f56c6c;
+  --z-color-danger-light-3: #f89898;
+  --z-color-info: #909399;
+  --z-color-info-light-3: #b1b3b8;
+
+  --z-color-text-primary: #e5eaf3;
+  --z-color-text-regular: #cfd3dc;
+  --z-color-text-secondary: #a3a6ad;
+  --z-color-text-placeholder: #8d9095;
+  --z-color-border: #4c4d4f;
+  --z-color-border-light: #414243;
+  --z-color-fill: #2b2b2c;
+  --z-color-fill-light: #262727;
+  --z-color-bg: #1d1e1f;
+
+  --z-shadow-message: 0 4px 12px rgb(0 0 0 / 28%);
+  --z-shadow-card: 0 2px 12px rgb(0 0 0 / 28%);
+}
