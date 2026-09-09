@@ -8,7 +8,7 @@
 
 - 增加 Input 输入框组件，支持双向绑定、清除内容、字数限制和前后缀插槽。
 - 增加 Checkbox、Radio、Switch 和 InputNumber 基础表单控件。
-- 增加 Select、Form 和 FormItem 复杂表单组件。
+- 增加 Select、Form 和 FormItem 复杂表单组件，支持统一继承表单尺寸和禁用状态。
 - 增加 Alert、Message、Dialog 和 Loading 反馈组件。
 - 增加 Space、Divider、Card、Tag、Badge 和 Empty 布局与展示组件。
 - 增加 Pagination、Breadcrumb、Tabs 和 Table 数据与导航组件。
