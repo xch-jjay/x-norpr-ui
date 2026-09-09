@@ -1,0 +1,25 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(tooltip) {
+  position: relative;
+  display: inline-flex;
+
+  &__content {
+    position: absolute;
+    z-index: var(--z-index-tooltip);
+    max-width: 240px;
+    padding: var(--z-spacing-2) var(--z-spacing-3);
+    border-radius: var(--z-border-radius-base);
+    color: var(--z-color-white);
+    background: var(--z-color-text-primary);
+    font-size: var(--z-font-size-small);
+    line-height: var(--z-line-height-base);
+    white-space: nowrap;
+    pointer-events: none;
+
+    @include m(top) { bottom: calc(100% + var(--z-spacing-2)); left: 50%; transform: translateX(-50%); }
+    @include m(bottom) { top: calc(100% + var(--z-spacing-2)); left: 50%; transform: translateX(-50%); }
+    @include m(left) { top: 50%; right: calc(100% + var(--z-spacing-2)); transform: translateY(-50%); }
+    @include m(right) { top: 50%; left: calc(100% + var(--z-spacing-2)); transform: translateY(-50%); }
+  }
+}

@@ -28,7 +28,10 @@ pnpm typecheck
 pnpm test
 pnpm build
 pnpm docs:build
+pnpm package:check
 ```
+
+`package:check` 用于确认组件库打包后的内容、导出入口、类型声明和真实安装场景都可用。涉及组件导出、构建配置或依赖变更时必须通过该检查。
 
 5. 提交 Pull Request，并填写变更说明和验证结果。
 

@@ -37,5 +37,8 @@ jobs:
       - name: 构建发布包
         run: pnpm build
 
+      - name: 检查发布包
+        run: pnpm package:check
+
       - name: 发布 npm
         run: npm publish ./packages/z-ui --access public

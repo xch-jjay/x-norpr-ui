@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [vue()],
   resolve: {
     alias: {
+      '@xch-jjay/z-ui': resolve(rootDir, 'packages/z-ui/src'),
       '@z-ui/components': resolve(rootDir, 'packages/components'),
       '@z-ui/theme-chalk': resolve(rootDir, 'packages/theme-chalk'),
       '@z-ui/utils': resolve(rootDir, 'packages/utils'),

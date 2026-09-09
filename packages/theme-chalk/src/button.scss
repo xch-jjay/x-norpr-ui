@@ -1,29 +1,31 @@
 @use 'mixins/mixins.scss' as *;
 
 @include b(button) {
-  --z-button-color: #606266;
-  --z-button-bg-color: #ffffff;
-  --z-button-border-color: #dcdfe6;
-  --z-button-hover-color: #409eff;
-  --z-button-hover-bg-color: #ecf5ff;
-  --z-button-hover-border-color: #b3d8ff;
+  --z-button-color: var(--z-color-text-regular);
+  --z-button-bg-color: var(--z-color-bg);
+  --z-button-border-color: var(--z-color-border);
+  --z-button-hover-color: var(--z-color-primary);
+  --z-button-hover-bg-color: var(--z-color-primary-light-9);
+  --z-button-hover-border-color: var(--z-color-primary-light-7);
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 32px;
-  padding: 0 15px;
+  height: var(--z-component-size-default);
+  padding: 0 var(--z-spacing-3);
   border: 1px solid var(--z-button-border-color);
-  border-radius: 4px;
+  border-radius: var(--z-border-radius-base);
   color: var(--z-button-color);
   background-color: var(--z-button-bg-color);
   font: inherit;
-  font-size: 14px;
+  font-size: var(--z-font-size-base);
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  transition: color var(--z-transition-duration) var(--z-transition-function),
+    background-color var(--z-transition-duration) var(--z-transition-function),
+    border-color var(--z-transition-duration) var(--z-transition-function);
 
   &:hover,
   &:focus-visible {
@@ -33,65 +35,65 @@
   }
 
   &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--z-button-hover-color) 35%, transparent);
+    outline: var(--z-focus-outline);
     outline-offset: 2px;
   }
 
   @include m(small) {
-    height: 24px;
-    padding: 0 11px;
-    font-size: 12px;
+    height: var(--z-component-size-small);
+    padding: 0 var(--z-spacing-2);
+    font-size: var(--z-font-size-small);
   }
 
   @include m(large) {
-    height: 40px;
-    padding: 0 19px;
-    font-size: 14px;
+    height: var(--z-component-size-large);
+    padding: 0 var(--z-spacing-4);
+    font-size: var(--z-font-size-base);
   }
 
   @include m(primary) {
-    --z-button-color: #ffffff;
-    --z-button-bg-color: #409eff;
-    --z-button-border-color: #409eff;
-    --z-button-hover-color: #ffffff;
-    --z-button-hover-bg-color: #66b1ff;
-    --z-button-hover-border-color: #66b1ff;
+    --z-button-color: var(--z-color-white);
+    --z-button-bg-color: var(--z-color-primary);
+    --z-button-border-color: var(--z-color-primary);
+    --z-button-hover-color: var(--z-color-white);
+    --z-button-hover-bg-color: var(--z-color-primary-light-3);
+    --z-button-hover-border-color: var(--z-color-primary-light-3);
   }
 
   @include m(success) {
-    --z-button-color: #ffffff;
-    --z-button-bg-color: #67c23a;
-    --z-button-border-color: #67c23a;
-    --z-button-hover-color: #ffffff;
-    --z-button-hover-bg-color: #85ce61;
-    --z-button-hover-border-color: #85ce61;
+    --z-button-color: var(--z-color-white);
+    --z-button-bg-color: var(--z-color-success);
+    --z-button-border-color: var(--z-color-success);
+    --z-button-hover-color: var(--z-color-white);
+    --z-button-hover-bg-color: var(--z-color-success-light-3);
+    --z-button-hover-border-color: var(--z-color-success-light-3);
   }
 
   @include m(warning) {
-    --z-button-color: #ffffff;
-    --z-button-bg-color: #e6a23c;
-    --z-button-border-color: #e6a23c;
-    --z-button-hover-color: #ffffff;
-    --z-button-hover-bg-color: #ebb563;
-    --z-button-hover-border-color: #ebb563;
+    --z-button-color: var(--z-color-white);
+    --z-button-bg-color: var(--z-color-warning);
+    --z-button-border-color: var(--z-color-warning);
+    --z-button-hover-color: var(--z-color-white);
+    --z-button-hover-bg-color: var(--z-color-warning-light-3);
+    --z-button-hover-border-color: var(--z-color-warning-light-3);
   }
 
   @include m(danger) {
-    --z-button-color: #ffffff;
-    --z-button-bg-color: #f56c6c;
-    --z-button-border-color: #f56c6c;
-    --z-button-hover-color: #ffffff;
-    --z-button-hover-bg-color: #f78989;
-    --z-button-hover-border-color: #f78989;
+    --z-button-color: var(--z-color-white);
+    --z-button-bg-color: var(--z-color-danger);
+    --z-button-border-color: var(--z-color-danger);
+    --z-button-hover-color: var(--z-color-white);
+    --z-button-hover-bg-color: var(--z-color-danger-light-3);
+    --z-button-hover-border-color: var(--z-color-danger-light-3);
   }
 
   @include m(info) {
-    --z-button-color: #ffffff;
-    --z-button-bg-color: #909399;
-    --z-button-border-color: #909399;
-    --z-button-hover-color: #ffffff;
-    --z-button-hover-bg-color: #a6a9ad;
-    --z-button-hover-border-color: #a6a9ad;
+    --z-button-color: var(--z-color-white);
+    --z-button-bg-color: var(--z-color-info);
+    --z-button-border-color: var(--z-color-info);
+    --z-button-hover-color: var(--z-color-white);
+    --z-button-hover-bg-color: var(--z-color-info-light-3);
+    --z-button-hover-border-color: var(--z-color-info-light-3);
   }
 
   @include when(plain) {
@@ -99,11 +101,11 @@
   }
 
   @include when(round) {
-    border-radius: 999px;
+    border-radius: var(--z-border-radius-round);
   }
 
   @include when(circle) {
-    width: 32px;
+    width: var(--z-component-size-default);
     padding: 0;
     border-radius: 50%;
   }

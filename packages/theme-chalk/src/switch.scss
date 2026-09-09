@@ -1,0 +1,107 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(switch) {
+  --z-switch-width: 40px;
+  --z-switch-height: 20px;
+  --z-switch-thumb-size: 16px;
+
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  color: var(--z-color-text-regular);
+  background: transparent;
+  font: inherit;
+  font-size: var(--z-font-size-base);
+  line-height: var(--z-line-height-base);
+  vertical-align: middle;
+  cursor: pointer;
+
+  &__core {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: var(--z-switch-width);
+    height: var(--z-switch-height);
+    border: 1px solid var(--z-switch-off-color);
+    border-radius: var(--z-border-radius-round);
+    background: var(--z-switch-off-color);
+    transition: border-color var(--z-transition-duration) var(--z-transition-function),
+      background-color var(--z-transition-duration) var(--z-transition-function);
+  }
+
+  &__thumb {
+    position: absolute;
+    left: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--z-switch-thumb-size);
+    height: var(--z-switch-thumb-size);
+    border-radius: 50%;
+    background: var(--z-color-white);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 18%);
+    transition: transform var(--z-transition-duration) var(--z-transition-function);
+  }
+
+  &__text {
+    margin-left: var(--z-spacing-2);
+  }
+
+  @include m(small) {
+    --z-switch-width: 32px;
+    --z-switch-height: 16px;
+    --z-switch-thumb-size: 12px;
+    font-size: var(--z-font-size-small);
+
+    .z-switch__thumb {
+      left: 1px;
+    }
+  }
+
+  @include m(large) {
+    --z-switch-width: 48px;
+    --z-switch-height: 24px;
+    --z-switch-thumb-size: 20px;
+    font-size: var(--z-font-size-large);
+  }
+
+  @include when(checked) {
+    .z-switch__core {
+      border-color: var(--z-switch-on-color);
+      background: var(--z-switch-on-color);
+    }
+
+    .z-switch__thumb {
+      transform: translateX(calc(var(--z-switch-width) - var(--z-switch-thumb-size) - 2px));
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &:focus-visible {
+    outline: var(--z-focus-outline);
+    outline-offset: 2px;
+  }
+
+  &__loading {
+    width: 9px;
+    height: 9px;
+    border: 2px solid var(--z-color-text-placeholder);
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: z-switch-loading 0.8s linear infinite;
+  }
+}
+
+@keyframes z-switch-loading {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

@@ -1,0 +1,177 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(select) {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  color: var(--z-color-text-regular);
+  font-size: var(--z-font-size-base);
+  vertical-align: middle;
+
+  &__trigger {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--z-component-size-default);
+    padding: 0 var(--z-spacing-3);
+    border: 1px solid var(--z-color-border);
+    border-radius: var(--z-border-radius-base);
+    outline: 0;
+    background: var(--z-color-bg);
+    cursor: pointer;
+    transition: border-color var(--z-transition-duration) var(--z-transition-function),
+      box-shadow var(--z-transition-duration) var(--z-transition-function);
+
+    &:hover,
+    &:focus-visible {
+      border-color: var(--z-color-primary-light-7);
+    }
+  }
+
+  &__selected,
+  &__placeholder {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__placeholder {
+    color: var(--z-color-text-placeholder);
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+  }
+
+  &__arrow {
+    margin-left: var(--z-spacing-2);
+    color: var(--z-color-text-secondary);
+    line-height: 1;
+    transition: transform var(--z-transition-duration) var(--z-transition-function);
+
+    &.is-open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    color: var(--z-color-text-secondary);
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--z-color-text-regular);
+      background: var(--z-color-fill);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    z-index: 10;
+    top: calc(100% + var(--z-spacing-1));
+    right: 0;
+    left: 0;
+    max-height: 240px;
+    overflow: auto;
+    padding: var(--z-spacing-1) 0;
+    border: 1px solid var(--z-color-border-light);
+    border-radius: var(--z-border-radius-base);
+    background: var(--z-color-bg);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 12%);
+  }
+
+  &__empty {
+    padding: var(--z-spacing-3);
+    color: var(--z-color-text-secondary);
+    text-align: center;
+  }
+
+  @include m(small) {
+    font-size: var(--z-font-size-small);
+
+    .z-select__trigger {
+      height: var(--z-component-size-small);
+      padding: 0 var(--z-spacing-2);
+    }
+  }
+
+  @include m(large) {
+    font-size: var(--z-font-size-large);
+
+    .z-select__trigger {
+      height: var(--z-component-size-large);
+    }
+  }
+
+  @include when(open) {
+    .z-select__trigger {
+      border-color: var(--z-color-primary);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--z-color-primary) 18%, transparent);
+    }
+  }
+
+  @include when(disabled) {
+    color: var(--z-color-text-placeholder);
+    cursor: not-allowed;
+
+    .z-select__trigger {
+      background: var(--z-color-fill);
+      cursor: not-allowed;
+    }
+  }
+}
+
+@include b(select-option) {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 var(--z-spacing-3);
+  border: 0;
+  color: var(--z-color-text-regular);
+  background: transparent;
+  font: inherit;
+  line-height: var(--z-component-size-default);
+  text-align: left;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible,
+  &[aria-selected='true'] {
+    color: var(--z-color-primary);
+    background: var(--z-color-primary-light-9);
+  }
+
+  &:focus-visible {
+    outline: var(--z-focus-outline);
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    color: var(--z-color-text-placeholder);
+    background: transparent;
+    cursor: not-allowed;
+  }
+}
+

@@ -1,23 +1,24 @@
 @use 'mixins/mixins.scss' as *;
 
 @include b(input) {
-  --z-input-color: #606266;
-  --z-input-placeholder-color: #a8abb2;
-  --z-input-bg-color: #ffffff;
-  --z-input-border-color: #dcdfe6;
-  --z-input-focus-color: #409eff;
+  --z-input-color: var(--z-color-text-regular);
+  --z-input-placeholder-color: var(--z-color-text-placeholder);
+  --z-input-bg-color: var(--z-color-bg);
+  --z-input-border-color: var(--z-color-border);
+  --z-input-focus-color: var(--z-color-primary);
 
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
   width: 100%;
-  height: 32px;
-  padding: 0 11px;
+  height: var(--z-component-size-default);
+  padding: 0 var(--z-spacing-3);
   border: 1px solid var(--z-input-border-color);
-  border-radius: 4px;
+  border-radius: var(--z-border-radius-base);
   color: var(--z-input-color);
   background-color: var(--z-input-bg-color);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color var(--z-transition-duration) var(--z-transition-function),
+    box-shadow var(--z-transition-duration) var(--z-transition-function);
 
   &:focus-within,
   &.is-focus {
@@ -26,25 +27,25 @@
   }
 
   @include m(small) {
-    height: 24px;
-    padding: 0 7px;
-    font-size: 12px;
+    height: var(--z-component-size-small);
+    padding: 0 var(--z-spacing-2);
+    font-size: var(--z-font-size-small);
   }
 
   @include m(large) {
-    height: 40px;
-    padding: 0 15px;
-    font-size: 14px;
+    height: var(--z-component-size-large);
+    padding: 0 var(--z-spacing-3);
+    font-size: var(--z-font-size-base);
   }
 
   @include when(disabled) {
-    color: #a8abb2;
-    background-color: #f5f7fa;
+    color: var(--z-color-text-placeholder);
+    background-color: var(--z-color-fill);
     cursor: not-allowed;
   }
 
   @include when(readonly) {
-    background-color: #fafafa;
+    background-color: var(--z-color-fill-light);
   }
 
   &__inner {
@@ -73,16 +74,16 @@
     display: inline-flex;
     align-items: center;
     flex-shrink: 0;
-    color: #909399;
+    color: var(--z-color-text-secondary);
   }
 
   &__prefix {
-    margin-right: 8px;
+    margin-right: var(--z-spacing-2);
   }
 
   &__suffix {
-    margin-left: 8px;
-    gap: 6px;
+    margin-left: var(--z-spacing-2);
+    gap: var(--z-spacing-1);
   }
 
   &__clear {
@@ -94,7 +95,7 @@
     padding: 0;
     border: 0;
     border-radius: 50%;
-    color: #909399;
+    color: var(--z-color-text-secondary);
     background: transparent;
     font-size: 16px;
     line-height: 1;
@@ -102,19 +103,19 @@
 
     &:hover,
     &:focus-visible {
-      color: #606266;
-      background: #f0f2f5;
+      color: var(--z-color-text-regular);
+      background: var(--z-color-fill);
     }
 
     &:focus-visible {
-      outline: 2px solid color-mix(in srgb, var(--z-input-focus-color) 35%, transparent);
+      outline: var(--z-focus-outline);
       outline-offset: 1px;
     }
   }
 
   &__count {
-    color: #909399;
-    font-size: 12px;
+    color: var(--z-color-text-secondary);
+    font-size: var(--z-font-size-small);
     white-space: nowrap;
   }
 }

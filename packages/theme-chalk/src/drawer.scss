@@ -1,0 +1,54 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(drawer) {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-index-drawer);
+  overflow: hidden;
+
+  &__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgb(0 0 0 / 50%);
+  }
+
+  &__content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: var(--z-color-bg);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 18%);
+    outline: none;
+
+    @include m(left) { top: 0; bottom: 0; left: 0; width: var(--z-drawer-size); }
+    @include m(right) { top: 0; right: 0; bottom: 0; width: var(--z-drawer-size); }
+    @include m(top) { top: 0; right: 0; left: 0; height: var(--z-drawer-size); }
+    @include m(bottom) { right: 0; bottom: 0; left: 0; height: var(--z-drawer-size); }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0 var(--z-spacing-4);
+    border-bottom: 1px solid var(--z-color-border-light);
+  }
+
+  &__title { flex: 1; color: var(--z-color-text-primary); font-size: var(--z-font-size-large); font-weight: 600; }
+
+  &__close {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    color: var(--z-color-text-secondary);
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+    &:focus-visible { outline: var(--z-focus-outline); }
+  }
+
+  &__body { flex: 1; overflow: auto; padding: var(--z-spacing-4); color: var(--z-color-text-regular); }
+  &__footer { padding: 0 var(--z-spacing-4) var(--z-spacing-4); text-align: right; }
+}

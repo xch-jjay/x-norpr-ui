@@ -1,0 +1,28 @@
+@use 'mixins/mixins.scss' as *;
+
+@include b(space) {
+  display: inline-flex;
+  align-items: var(--z-space-align, center);
+  gap: var(--z-space-gap);
+
+  @include m(horizontal) {
+    flex-direction: row;
+  }
+
+  @include m(vertical) {
+    flex-direction: column;
+  }
+
+  @include when(wrap) {
+    flex-wrap: wrap;
+  }
+
+  @include when(fill) {
+    display: flex;
+
+    > * {
+      flex: 1;
+      min-width: 0;
+    }
+  }
+}
