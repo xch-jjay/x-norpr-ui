@@ -79,6 +79,7 @@ createApp(App).use(ZUI).mount('#app')
 pnpm install
 pnpm dev
 pnpm test
+pnpm test:coverage
 pnpm build
 pnpm docs:dev
 ```
@@ -98,7 +99,7 @@ pnpm docs:build
 pnpm package:check
 ```
 
-其中 `pnpm package:check` 会检查最终 npm 压缩包内容、包元数据和导出类型，并在临时消费者项目中验证 ESM、CommonJS 以及 TypeScript 安装使用。
+其中 `pnpm test:coverage` 会执行覆盖率门禁；`pnpm package:check` 会检查最终 npm 压缩包内容、包元数据、导出类型、SSR 导入、构建产物体积，并在临时消费者项目中验证 ESM、CommonJS 以及 TypeScript 安装使用。更多说明见 [稳定性检查](./docs/guide/quality.md)。
 
 项目通过 GitHub Actions 自动检查 Pull Request。npm 发布只在推送版本标签后执行，具体流程见 [RELEASE.md](./RELEASE.md)。
 

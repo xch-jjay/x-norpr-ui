@@ -10,6 +10,7 @@
     "build": "pnpm run typecheck && vite build && sass packages/theme-chalk/src/index.scss packages/z-ui/dist/style.css --no-source-map",
     "build:types": "vite build",
     "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "vue-tsc --noEmit -p tsconfig.json",
     "lint": "eslint . --ext .ts,.vue,.js",
@@ -20,7 +21,9 @@
     "package:lint": "publint packages/z-ui",
     "package:types": "attw --pack packages/z-ui --exclude-entrypoints style.css package.json",
     "package:consumer": "node scripts/consumer-smoke.mjs",
-    "package:check": "pnpm pack:check && pnpm package:lint && pnpm package:types && pnpm package:consumer",
+    "package:ssr": "node scripts/ssr-smoke.mjs",
+    "package:size": "node scripts/package-size.mjs",
+    "package:check": "pnpm pack:check && pnpm package:lint && pnpm package:types && pnpm package:consumer && pnpm package:ssr && pnpm package:size",
     "clean": "node -e \"fs.rmSync('packages/z-ui/dist', { recursive: true, force: true })\""
   },
   "keywords": [
@@ -51,6 +54,7 @@
     "@eslint/js": "^9.6.0",
     "@types/node": "^22.10.0",
     "@vitejs/plugin-vue": "^5.0.5",
+    "@vitest/coverage-v8": "2.0.5",
     "@vue/language-core": "3.3.11",
     "@vue/test-utils": "^2.4.6",
     "@z-ui/components": "workspace:*",

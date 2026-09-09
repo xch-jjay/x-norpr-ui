@@ -39,6 +39,9 @@ jobs:
       - name: 单元测试
         run: pnpm test
 
+      - name: 覆盖率检查
+        run: pnpm test:coverage
+
       - name: 构建组件库
         run: pnpm build
 
