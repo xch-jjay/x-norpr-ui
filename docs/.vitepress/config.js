@@ -57,6 +57,8 @@ export default defineConfig({
             { text: 'Breadcrumb 面包屑', link: '/component/breadcrumb' },
             { text: 'Tabs 标签页', link: '/component/tabs' },
             { text: 'Table 表格', link: '/component/table' },
+            { text: 'Drawer 抽屉', link: '/component/drawer' },
+            { text: 'Tooltip 文字提示', link: '/component/tooltip' },
           ],
         },
         {

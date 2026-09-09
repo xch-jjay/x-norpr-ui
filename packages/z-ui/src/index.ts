@@ -1,11 +1,11 @@
 import type { App } from 'vue'
-import { Alert, Badge, Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Pagination, Radio, RadioGroup, Select, Space, Switch, TabPane, Table, TableColumn, Tabs, Tag } from '@z-ui/components'
+import { Alert, Badge, Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Drawer, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Pagination, Radio, RadioGroup, Select, Space, Switch, TabPane, Table, TableColumn, Tabs, Tag, Tooltip } from '@z-ui/components'
 import packageJson from '../package.json'
 
-export { Alert, Badge, Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Pagination, Radio, RadioGroup, Select, Space, Switch, TabPane, Table, TableColumn, Tabs, Tag }
+export { Alert, Badge, Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Drawer, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, LoadingService, Message, Option, Pagination, Radio, RadioGroup, Select, Space, Switch, TabPane, Table, TableColumn, Tabs, Tag, Tooltip }
 export * from '@z-ui/components'
 
-const components = [Alert, Badge, Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, Message, Option, Pagination, Radio, RadioGroup, Select, Space, Switch, TabPane, Table, TableColumn, Tabs, Tag]
+const components = [Alert, Badge, Breadcrumb, BreadcrumbItem, Button, Card, Checkbox, CheckboxGroup, Dialog, Divider, Drawer, Empty, Form, FormItem, Icon, Input, InputNumber, Loading, Message, Option, Pagination, Radio, RadioGroup, Select, Space, Switch, TabPane, Table, TableColumn, Tabs, Tag, Tooltip]
 
 export const version = packageJson.version
 

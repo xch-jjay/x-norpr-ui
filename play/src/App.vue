@@ -20,6 +20,7 @@ const formMessage = ref('')
 const showAlert = ref(true)
 const showDialog = ref(false)
 const currentPage = ref(1)
+const showDrawer = ref(false)
 
 async function validateProfile() {
   formMessage.value = (await formRef.value?.validate()) ? '校验通过' : '请完善表单'
@@ -77,6 +78,15 @@ function showLoading() {
       <z-table-column prop="role" label="角色" />
       <z-table-column prop="age" label="年龄" sortable />
     </z-table>
+    <z-tooltip content="打开侧边筛选面板">
+      <z-button @click="showDrawer = true">打开 Drawer</z-button>
+    </z-tooltip>
+    <z-drawer v-model="showDrawer" title="筛选条件" size="360px">
+      <p>这里可以放置筛选表单。</p>
+      <template #footer>
+        <z-button @click="showDrawer = false">关闭</z-button>
+      </template>
+    </z-drawer>
     <z-icon color="red" :size="20">
       <AirplaneSharp />
     </z-icon>
