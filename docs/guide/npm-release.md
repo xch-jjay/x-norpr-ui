@@ -2,7 +2,7 @@
 
 > 适用项目：`xch-jjay/x-norpr-ui`  
 > 适用包：`@xch-jjay/z-ui`  
-> 当前已发布版本：`0.1.0`  
+> npm 当前已发布版本：`0.1.0`；仓库待发布版本：`0.2.0`
 > 技术栈：Vue 3、TypeScript、pnpm workspace、GitHub Actions、npm Trusted Publishing
 
 ## 1. 先看结论
@@ -138,6 +138,7 @@ corepack pnpm install --frozen-lockfile
 corepack pnpm lint
 corepack pnpm typecheck
 corepack pnpm test
+corepack pnpm test:coverage
 corepack pnpm build
 corepack pnpm docs:build
 corepack pnpm package:check
@@ -165,6 +166,8 @@ corepack pnpm --filter @xch-jjay/z-ui pack:check
 - `package:lint`：使用 `publint` 检查 `package.json`、`exports` 和发布文件
 - `package:types`：使用 `attw` 检查 ESM、CommonJS 和 TypeScript 类型入口
 - `package:consumer`：在临时消费者项目中安装压缩包，验证 ESM、CommonJS 和 TypeScript 实际使用
+- `package:ssr`：在没有浏览器全局对象的 Node.js 环境中导入 ESM 入口
+- `package:size`：检查 ESM、CommonJS 和 CSS 构建产物是否超过体积上限
 
 因此，涉及组件导出、构建配置、类型声明或依赖变更时，应优先运行：
 
@@ -222,7 +225,7 @@ npm view @xch-jjay/z-ui version --registry=https://registry.npmjs.org/
 npm view @xch-jjay/z-ui dist-tags --registry=https://registry.npmjs.org/
 ```
 
-本项目已验证成功，当前公开版本为 `0.1.0`。安装验证：
+本项目已验证成功，当前公开版本为 `0.1.0`。仓库中的下一个待发布版本为 `0.2.0`。安装验证：
 
 ```powershell
 pnpm add @xch-jjay/z-ui
@@ -276,16 +279,16 @@ packages/z-ui/package.json
 CHANGELOG.md
 ```
 
-例如将：
+本项目当前已经准备好发布 `0.2.0`，示例将版本更新为：
 
 ```json
-"version": "0.1.0"
+"version": "0.2.0"
 ```
 
-改为：
+后续版本也应遵循同样规则，例如补丁版本 `0.2.1`：
 
 ```json
-"version": "0.1.1"
+"version": "0.2.1"
 ```
 
 然后重新执行完整检查：
@@ -304,8 +307,8 @@ corepack pnpm package:check
 
 ```powershell
 git add packages/z-ui/package.json CHANGELOG.md
-git commit -m "发布 z-ui 0.1.1"
-git push -u origin feature/release-0.1.1
+git commit -m "发布 z-ui 0.2.0"
+git push -u origin release/0.2.0
 ```
 
 CI 通过并合并后，在本地同步最新 master：
@@ -318,8 +321,8 @@ git pull origin master
 ### 9.3 创建版本标签触发 CD
 
 ```powershell
-git tag v0.1.1
-git push origin v0.1.1
+git tag v0.2.0
+git push origin v0.2.0
 ```
 
 标签格式必须匹配 workflow 的触发规则：
@@ -328,7 +331,7 @@ git push origin v0.1.1
 v主版本.次版本.修订版本
 ```
 
-例如：`v0.1.1`、`v0.2.0`、`v1.0.0`。
+例如：`v0.2.0`、`v0.2.1`、`v1.0.0`。
 
 标签推送后，GitHub Actions 会执行：
 
@@ -425,7 +428,7 @@ npm view @xch-jjay/z-ui version --registry=https://registry.npmjs.org/
 1. npm Trusted Publisher 中的用户、仓库、workflow 文件名完全正确。
 2. npm 页面填写的是 `release.yml`，不是 `.github/workflows/release.yml`。
 3. workflow 中存在 `id-token: write`。
-4. 标签格式为 `v0.1.1` 这类 SemVer 标签。
+4. 标签格式为 `v0.2.0` 这类 SemVer 标签。
 5. 包版本没有重复发布。
 6. 不要先去创建长期 npm token；Trusted Publishing 不需要它。
 
@@ -452,9 +455,10 @@ npm view @xch-jjay/z-ui version --registry=https://registry.npmjs.org/
 [ ] lint 通过
 [ ] typecheck 通过
 [ ] test 通过
+[ ] test:coverage 通过
 [ ] build 通过
 [ ] docs:build 通过
-[ ] package:check 通过（包含 pack、publint、attw 和消费者安装验证）
+[ ] package:check 通过（包含 pack、publint、attw、消费者安装、SSR 和体积验证）
 [ ] packages/z-ui/package.json 版本号已更新
 [ ] CHANGELOG.md 已更新
 [ ] 中文提交信息清晰
@@ -475,7 +479,7 @@ npm view @xch-jjay/z-ui version --registry=https://registry.npmjs.org/
 
 ## 14. 本次项目的特别注意事项
 
-`0.1.0` 已经通过本地命令发布成功，因此不要再次推送 `v0.1.0` 标签触发自动发布；否则 GitHub Actions 会尝试重复发布同一版本并失败。下一次应把版本更新为 `0.1.1` 或更高版本，确认 Trusted Publisher 配置正确后，再推送对应标签。
+`0.1.0` 已经通过本地命令发布成功，因此不要再次推送 `v0.1.0` 标签触发自动发布；否则 GitHub Actions 会尝试重复发布同一版本并失败。当前仓库已经把组件和质量门禁准备到 `0.2.0`，确认 Trusted Publisher 配置正确、PR 合并后，再推送 `v0.2.0` 标签。
 
 
 
