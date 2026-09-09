@@ -4,9 +4,9 @@
       ref="triggerRef"
       class="z-select__trigger"
       role="combobox"
-      :tabindex="props.disabled ? -1 : 0"
+      :tabindex="formControl.disabled.value ? -1 : 0"
       :aria-expanded="visible ? 'true' : 'false'"
-      :aria-disabled="props.disabled ? 'true' : undefined"
+      :aria-disabled="formControl.disabled.value ? 'true' : undefined"
       aria-haspopup="listbox"
       @click="handleTriggerClick"
       @keydown="handleKeydown"
@@ -17,7 +17,7 @@
         class="z-select__input"
         :value="query"
         :placeholder="selectedLabel || props.placeholder"
-        :disabled="props.disabled"
+        :disabled="formControl.disabled.value"
         aria-autocomplete="list"
         @input="handleInput"
         @click.stop="open"
@@ -48,12 +48,14 @@
 <script setup lang="ts">
 import { computed, nextTick, onMounted, onUnmounted, provide, ref } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { selectKey, selectProps, type SelectOptionRecord, type SelectValue } from './select'
 
 defineOptions({ name: 'ZSelect' })
 
 const bem = createNamespace('select')
 const props = defineProps(selectProps)
+const formControl = useFormControl(props)
 const emit = defineEmits<{
   (event: 'update:modelValue', value: SelectValue | undefined): void
   (event: 'change', value: SelectValue | undefined): void
@@ -69,12 +71,12 @@ const options = ref<SelectOptionRecord[]>([])
 const selectedOption = computed(() => options.value.find((option) => option.value === props.modelValue))
 const selectedLabel = computed(() => selectedOption.value?.label || '')
 const visibleOptions = computed(() => options.value.filter((option) => isOptionVisible(option.label)))
-const showClear = computed(() => props.clearable && props.modelValue !== undefined && !props.disabled)
+const showClear = computed(() => props.clearable && props.modelValue !== undefined && !formControl.disabled.value)
 
 const selectClass = computed(() => [
   bem.b(),
-  bem.m(props.size),
-  bem.is('disabled', props.disabled),
+  bem.m(formControl.size.value),
+  bem.is('disabled', formControl.disabled.value),
   bem.is('open', visible.value),
 ])
 
@@ -99,7 +101,7 @@ function focusTrigger() {
 }
 
 function open() {
-  if (props.disabled) return
+  if (formControl.disabled.value) return
   visible.value = true
   focusTrigger()
 }
@@ -110,7 +112,7 @@ function close() {
 }
 
 function select(value: SelectValue) {
-  if (props.disabled) return
+  if (formControl.disabled.value) return
   const option = options.value.find((item) => item.value === value)
   if (option?.disabled) return
 
@@ -138,7 +140,7 @@ function handleInput(event: Event) {
 }
 
 function handleKeydown(event: KeyboardEvent) {
-  if (props.disabled) return
+  if (formControl.disabled.value) return
 
   if (event.key === 'ArrowDown' || event.key === 'Enter') {
     event.preventDefault()
@@ -154,8 +156,8 @@ function handleOutsideClick(event: MouseEvent) {
 
 provide(selectKey, {
   modelValue: computed(() => props.modelValue),
-  disabled: computed(() => props.disabled),
-  size: computed(() => props.size),
+  disabled: formControl.disabled,
+  size: formControl.size,
   filterable: computed(() => props.filterable),
   query,
   options,

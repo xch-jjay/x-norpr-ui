@@ -2,7 +2,7 @@
   <div
     class="z-radio-group"
     role="radiogroup"
-    :aria-disabled="props.disabled ? 'true' : undefined"
+    :aria-disabled="isDisabled ? 'true' : undefined"
   >
     <slot />
   </div>
@@ -20,6 +20,6 @@ const emit = defineEmits<{
   (event: 'change', value: RadioValue): void
 }>()
 
-useRadioGroup(props, emit)
+const { disabled: isDisabled } = useRadioGroup(props, emit)
 </script>
 

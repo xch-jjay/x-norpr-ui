@@ -2,7 +2,7 @@
   <div
     :class="bem.b()"
     role="group"
-    :aria-disabled="props.disabled ? 'true' : undefined"
+    :aria-disabled="isDisabled ? 'true' : undefined"
   >
     <slot />
   </div>
@@ -20,5 +20,5 @@ const emit = defineEmits<{
   (event: 'change', value: CheckboxValue[]): void
 }>()
 
-const { bem } = useCheckboxGroup(props, emit)
+const { bem, disabled: isDisabled } = useCheckboxGroup(props, emit)
 </script>

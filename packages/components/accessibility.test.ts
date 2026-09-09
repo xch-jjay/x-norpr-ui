@@ -59,7 +59,7 @@ describe('公开组件可访问性语义', () => {
     })
     await nextTick()
 
-    expect(tabs.get('[role="tablist"]').exists()).toBe(true)
+    expect(tabs.find('[role="tablist"]').exists()).toBe(true)
     const tab = tabs.findAll('[role="tab"]')[1]
     expect(tab.attributes('aria-controls')).toMatch(/^z-tab-panel-/)
     await tab.trigger('keydown.enter')

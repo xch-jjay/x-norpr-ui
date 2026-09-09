@@ -1,5 +1,6 @@
 import { computed, provide, type ExtractPropTypes, type PropType } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { checkboxGroupKey, type CheckboxSize, type CheckboxValue } from './checkbox'
 
 export const checkboxGroupProps = {
@@ -23,12 +24,13 @@ export function useCheckboxGroup(props: CheckboxGroupProps, emit: {
   (event: 'change', value: CheckboxValue[]): void
 }) {
   const bem = createNamespace('checkbox-group')
+  const formControl = useFormControl(props)
   const modelValue = computed(() => props.modelValue)
-  const size = computed(() => props.size)
-  const disabled = computed(() => props.disabled)
+  const size = formControl.size
+  const disabled = formControl.disabled
 
   function isDisabled(value: CheckboxValue, checked: boolean) {
-    if (props.disabled) return true
+    if (disabled.value) return true
     if (!checked && typeof props.max === 'number' && modelValue.value.length >= props.max) return true
     if (checked && typeof props.min === 'number' && modelValue.value.length <= props.min) return true
     return false
@@ -52,5 +54,5 @@ export function useCheckboxGroup(props: CheckboxGroupProps, emit: {
     toggle,
   })
 
-  return { bem }
+  return { bem, disabled }
 }

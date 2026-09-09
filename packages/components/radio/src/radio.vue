@@ -22,12 +22,14 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { radioGroupKey, radioProps, type RadioValue } from './radio'
 
 defineOptions({ name: 'ZRadio' })
 
 const bem = createNamespace('radio')
 const props = defineProps(radioProps)
+const formControl = useFormControl(props)
 const emit = defineEmits<{
   (event: 'update:modelValue', value: RadioValue): void
   (event: 'change', value: RadioValue): void
@@ -38,9 +40,9 @@ const value = computed<RadioValue>(() => props.label ?? true)
 const checked = computed(() => (
   group ? group.modelValue.value === value.value : props.modelValue === value.value
 ))
-const size = computed(() => props.size || group?.size.value || 'default')
+const size = computed(() => props.size || group?.size.value || formControl.size.value)
 const isDisabled = computed(() => (
-  props.disabled
+  formControl.disabled.value
   || Boolean(group?.disabled.value)
   || Boolean(group?.isDisabled(value.value))
 ))

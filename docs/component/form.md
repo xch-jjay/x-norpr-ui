@@ -56,6 +56,19 @@ formRef.value.resetFields()
 
 `resetFields` 会恢复 Form 初始化时的字段值，并清除 FormItem 的校验状态。
 
+## 统一尺寸和禁用状态
+
+`Form` 的 `size` 和 `disabled` 会通过上下文传递给 Input、InputNumber、Select、Checkbox、Radio、Switch 等表单控件。单个控件显式设置的非默认尺寸仍然优先：
+
+```vue
+<z-form :model="model" size="small" disabled>
+  <z-input v-model="model.keyword" />
+  <z-input-number v-model="model.count" size="large" />
+</z-form>
+```
+
+上例中的输入框会继承小尺寸和禁用状态，数字输入会使用显式的大尺寸，但仍然继承禁用状态。
+
 ## API
 
 ### Form Props
@@ -66,7 +79,7 @@ formRef.value.resetFields()
 | `rules` | `FormRules` | `{}` | 字段校验规则 |
 | `labelWidth` | `string` | `'100px'` | 标签宽度 |
 | `size` | `'small' \| 'default' \| 'large'` | `'default'` | 表单尺寸 |
-| `disabled` | `boolean` | `false` | 是否禁用表单状态样式 |
+| `disabled` | `boolean` | `false` | 是否禁用表单及其支持上下文的控件 |
 
 ### FormItem Props
 

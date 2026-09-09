@@ -20,7 +20,7 @@
       :min="props.min"
       :max="props.max"
       :step="props.step"
-      :disabled="props.disabled"
+      :disabled="formControl.disabled.value"
       :readonly="props.readonly"
       :aria-valuenow="props.modelValue"
       :aria-valuemin="props.min"
@@ -48,12 +48,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { inputNumberProps, type InputNumberValue } from './input-number'
 
 defineOptions({ name: 'ZInputNumber', inheritAttrs: false })
 
 const bem = createNamespace('input-number')
 const props = defineProps(inputNumberProps)
+const formControl = useFormControl(props)
 const emit = defineEmits<{
   (event: 'update:modelValue', value: InputNumberValue): void
   (event: 'input', value: InputNumberValue): void
@@ -67,7 +69,7 @@ const focused = ref(false)
 
 const displayValue = computed(() => props.modelValue ?? '')
 const currentValue = computed(() => props.modelValue ?? 0)
-const isDisabled = computed(() => props.disabled || props.readonly)
+const isDisabled = computed(() => formControl.disabled.value || props.readonly)
 const decreaseDisabled = computed(() => (
   isDisabled.value
   || (typeof props.min === 'number' && currentValue.value <= props.min)
@@ -79,8 +81,8 @@ const increaseDisabled = computed(() => (
 
 const inputNumberClass = computed(() => [
   bem.b(),
-  bem.m(props.size),
-  bem.is('disabled', props.disabled),
+  bem.m(formControl.size.value),
+  bem.is('disabled', formControl.disabled.value),
   bem.is('readonly', props.readonly),
   bem.is('focus', focused.value),
 ])

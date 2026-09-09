@@ -2,6 +2,8 @@ import { h } from 'vue'
 import { mount } from '@vue/test-utils'
 import { describe, expect, it } from 'vitest'
 import Form, { FormItem } from './index'
+import Input from '../input'
+import Switch from '../switch'
 import type { FormRules } from './index'
 
 function mountForm(model: Record<string, unknown>, rules: FormRules) {
@@ -53,5 +55,23 @@ describe('ZForm', () => {
 
     expect(wrapper.find('.z-form-item__label').text()).toContain('用户名')
     expect(wrapper.find('.z-form-item__required').text()).toBe('*')
+  })
+
+  it('provides size and disabled state to form controls', () => {
+    const model = { username: '' }
+    const wrapper = mount(Form, {
+      props: { model, rules: {}, size: 'large', disabled: true },
+      slots: {
+        default: () => [
+          h(Input, { modelValue: model.username }),
+          h(Switch, { modelValue: false }),
+        ],
+      },
+    })
+
+    expect(wrapper.find('.z-input').classes()).toContain('z-input--large')
+    expect(wrapper.find('.z-input__inner').attributes('disabled')).toBeDefined()
+    expect(wrapper.find('.z-switch').classes()).toContain('z-switch--large')
+    expect(wrapper.find('.z-switch').attributes('disabled')).toBeDefined()
   })
 })

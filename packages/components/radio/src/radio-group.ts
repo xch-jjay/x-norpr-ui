@@ -1,4 +1,5 @@
 import { computed, provide, type ExtractPropTypes, type PropType } from 'vue'
+import { useFormControl } from '../../form/src/control'
 import { radioGroupKey, type RadioSize, type RadioValue } from './radio'
 
 let radioGroupId = 0
@@ -22,19 +23,20 @@ export function useRadioGroup(props: RadioGroupProps, emit: {
   (event: 'update:modelValue', value: RadioValue): void
   (event: 'change', value: RadioValue): void
 }) {
+  const formControl = useFormControl(props)
   const modelValue = computed(() => props.modelValue)
-  const disabled = computed(() => props.disabled)
-  const size = computed(() => props.size)
+  const disabled = formControl.disabled
+  const size = formControl.size
   const groupId = radioGroupId
   radioGroupId += 1
   const name = computed(() => props.name || `z-radio-group-${groupId}`)
 
   function isDisabled() {
-    return props.disabled
+    return disabled.value
   }
 
   function select(value: RadioValue) {
-    if (props.disabled || modelValue.value === value) return false
+    if (disabled.value || modelValue.value === value) return false
 
     emit('update:modelValue', value)
     emit('change', value)
@@ -49,4 +51,6 @@ export function useRadioGroup(props: RadioGroupProps, emit: {
     isDisabled,
     select,
   })
+
+  return { disabled }
 }

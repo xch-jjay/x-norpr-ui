@@ -12,7 +12,7 @@
       :type="props.type"
       :placeholder="props.placeholder"
       :maxlength="props.maxlength"
-      :disabled="props.disabled"
+      :disabled="formControl.disabled.value"
       :readonly="props.readonly"
       @input="handleInput"
       @change="handleChange"
@@ -42,12 +42,14 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { inputProps } from './input'
 
 defineOptions({ name: 'ZInput', inheritAttrs: false })
 
 const bem = createNamespace('input')
 const props = defineProps(inputProps)
+const formControl = useFormControl(props)
 const emit = defineEmits<{
   (event: 'update:modelValue', value: string): void
   (event: 'input', value: string): void
@@ -63,7 +65,7 @@ const focused = ref(false)
 const showClear = computed(() => (
   props.clearable
   && props.modelValue.length > 0
-  && !props.disabled
+  && !formControl.disabled.value
   && !props.readonly
 ))
 
@@ -73,8 +75,8 @@ const showWordCount = computed(() => (
 
 const inputClass = computed(() => [
   bem.b(),
-  bem.m(props.size),
-  bem.is('disabled', props.disabled),
+  bem.m(formControl.size.value),
+  bem.is('disabled', formControl.disabled.value),
   bem.is('readonly', props.readonly),
   bem.is('focus', focused.value),
 ])
@@ -84,7 +86,7 @@ function getValue(event: Event) {
 }
 
 function handleInput(event: Event) {
-  if (props.disabled || props.readonly) return
+  if (formControl.disabled.value || props.readonly) return
 
   const value = getValue(event)
   emit('update:modelValue', value)

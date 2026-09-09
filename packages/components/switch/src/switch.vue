@@ -26,23 +26,25 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { switchProps, type SwitchValue } from './switch'
 
 defineOptions({ name: 'ZSwitch' })
 
 const bem = createNamespace('switch')
 const props = defineProps(switchProps)
+const formControl = useFormControl(props)
 const emit = defineEmits<{
   (event: 'update:modelValue', value: SwitchValue): void
   (event: 'change', value: SwitchValue): void
 }>()
 
 const checked = computed(() => props.modelValue === props.activeValue)
-const isDisabled = computed(() => props.disabled || props.loading)
+const isDisabled = computed(() => formControl.disabled.value || props.loading)
 
 const switchClass = computed(() => [
   bem.b(),
-  bem.m(props.size),
+  bem.m(formControl.size.value),
   bem.is('checked', checked.value),
   bem.is('disabled', isDisabled.value),
   bem.is('loading', props.loading),

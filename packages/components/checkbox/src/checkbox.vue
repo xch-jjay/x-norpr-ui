@@ -22,12 +22,14 @@
 <script setup lang="ts">
 import { computed, inject, ref, watchEffect } from 'vue'
 import { createNamespace } from '@z-ui/utils/create'
+import { useFormControl } from '../../form/src/control'
 import { checkboxGroupKey, checkboxProps, type CheckboxValue } from './checkbox'
 
 defineOptions({ name: 'ZCheckbox' })
 
 const bem = createNamespace('checkbox')
 const props = defineProps(checkboxProps)
+const formControl = useFormControl(props)
 const emit = defineEmits<{
   (event: 'update:modelValue', value: CheckboxValue): void
   (event: 'change', value: CheckboxValue): void
@@ -42,9 +44,9 @@ const checked = computed(() => (
     ? group.modelValue.value.includes(value.value)
     : props.modelValue === props.trueValue
 ))
-const size = computed(() => props.size || group?.size.value || 'default')
+const size = computed(() => props.size || group?.size.value || formControl.size.value)
 const isDisabled = computed(() => (
-  props.disabled
+  formControl.disabled.value
   || Boolean(group?.disabled.value)
   || Boolean(group?.isDisabled(value.value, checked.value))
 ))
