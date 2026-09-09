@@ -19,6 +19,7 @@ pnpm package:check
 其中：
 
 - `pnpm test:coverage` 使用 Vitest 和 V8 统计组件源码覆盖率，并检查最低阈值。
+- `pnpm api:audit` 会核对公开组件是否同时具备导出、类型入口、样式、文档和测试，并确认已加入默认插件注册。
 - `pnpm package:check` 会检查 npm 压缩包内容、包元数据、类型入口、消费者安装、SSR 导入和构建产物体积。
 - `pnpm package:ssr` 在没有浏览器 `window`、`document` 的 Node.js 环境中导入 ESM 入口，避免发布包在 SSR 项目中初始化失败。
 - `pnpm package:size` 检查 ESM、CommonJS 和 CSS 构建产物的体积上限，防止无意中引入过大的依赖。

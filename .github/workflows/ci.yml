@@ -36,6 +36,9 @@ jobs:
       - name: 类型检查
         run: pnpm typecheck
 
+      - name: API 清单审计
+        run: pnpm api:audit
+
       - name: 单元测试
         run: pnpm test
 
